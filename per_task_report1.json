@@ -1,0 +1,718 @@
+{
+  "summary.json": {
+    "correct": false,
+    "error_type": "missing_prediction",
+    "error_detail": "prediction.csv not found",
+    "accuracy": 0.0
+  },
+  "task_11": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_145": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_163": {
+    "correct": false,
+    "error_type": "missing_or_mismatched_gold_column",
+    "error_detail": {
+      "gold_column_index": 0,
+      "pred_columns": [
+        "expense_description",
+        "sum(cost)"
+      ],
+      "gold_columns": [
+        "type",
+        "sum(t3.cost)"
+      ],
+      "pred_data": {
+        "columns": [
+          "expense_description",
+          "sum(cost)"
+        ],
+        "rows": [
+          [
+            "Posters",
+            54.25
+          ],
+          [
+            "Water, chips, cookies",
+            69.33
+          ],
+          [
+            "Pizza",
+            51.81
+          ]
+        ]
+      },
+      "gold_data": {
+        "columns": [
+          "type",
+          "sum(t3.cost)"
+        ],
+        "rows": [
+          [
+            "Meeting",
+            175.39
+          ]
+        ]
+      }
+    },
+    "accuracy": 0.0
+  },
+  "task_169": {
+    "correct": false,
+    "error_type": "missing_or_mismatched_gold_column",
+    "error_detail": {
+      "gold_column_index": 0,
+      "pred_columns": [
+        "avg_monthly_consumption"
+      ],
+      "gold_columns": [
+        "avg(t2.consumption) / 12"
+      ],
+      "pred_data": {
+        "columns": [
+          "avg_monthly_consumption"
+        ],
+        "rows": [
+          [
+            82027220.3
+          ]
+        ]
+      },
+      "gold_data": {
+        "columns": [
+          "avg(t2.consumption) / 12"
+        ],
+        "rows": [
+          [
+            459.9562642871061
+          ]
+        ]
+      }
+    },
+    "accuracy": 0.0
+  },
+  "task_173": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_180": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_19": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_194": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_196": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_199": {
+    "correct": false,
+    "error_type": "missing_or_mismatched_gold_column",
+    "error_detail": {
+      "gold_column_index": 0,
+      "pred_columns": [
+        "sname",
+        "charter funding type"
+      ],
+      "gold_columns": [
+        "sname",
+        "charter funding type"
+      ],
+      "pred_data": {
+        "columns": [
+          "sname",
+          "charter funding type"
+        ],
+        "rows": [
+          [
+            "Arlington High",
+            NaN
+          ],
+          [
+            "Come Back Kids",
+            "Locally funded"
+          ],
+          [
+            "Gateway College and Career Academy",
+            "Directly funded"
+          ],
+          [
+            "John W. North High",
+            NaN
+          ],
+          [
+            "Martin Luther King Jr. High",
+            NaN
+          ],
+          [
+            "Opportunity Program",
+            NaN
+          ],
+          [
+            "Polytechnic High",
+            NaN
+          ],
+          [
+            "Ramona High",
+            NaN
+          ],
+          [
+            "River Springs Charter",
+            "Directly funded"
+          ],
+          [
+            "Riverside County Education Academy",
+            "Locally funded"
+          ],
+          [
+            "Riverside Virtual",
+            NaN
+          ],
+          [
+            "Summit View Independent Study",
+            NaN
+          ]
+        ]
+      },
+      "gold_data": {
+        "columns": [
+          "sname",
+          "charter funding type"
+        ],
+        "rows": [
+          [
+            "Arlington High",
+            NaN
+          ],
+          [
+            "John W. North High",
+            NaN
+          ],
+          [
+            "Martin Luther King Jr. High",
+            NaN
+          ],
+          [
+            "Polytechnic High",
+            NaN
+          ],
+          [
+            "Ramona High",
+            NaN
+          ],
+          [
+            "River Springs Charter",
+            "Directly funded"
+          ]
+        ]
+      }
+    },
+    "accuracy": 0.0
+  },
+  "task_200": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_214": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_218": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_22": {
+    "correct": false,
+    "error_type": "missing_or_mismatched_gold_column",
+    "error_detail": {
+      "gold_column_index": 0,
+      "pred_columns": [
+        "date_received"
+      ],
+      "gold_columns": [
+        "date_received"
+      ],
+      "pred_data": {
+        "columns": [
+          "date_received"
+        ],
+        "rows": [
+          [
+            "2019-10-02"
+          ]
+        ]
+      },
+      "gold_data": {
+        "columns": [
+          "date_received"
+        ],
+        "rows": [
+          [
+            "2019-10-02"
+          ],
+          [
+            "2019-09-12"
+          ]
+        ]
+      }
+    },
+    "accuracy": 0.0
+  },
+  "task_24": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_243": {
+    "correct": false,
+    "error_type": "missing_or_mismatched_gold_column",
+    "error_detail": {
+      "gold_column_index": 0,
+      "pred_columns": [
+        "count(owneruserid)",
+        "count(userid)"
+      ],
+      "gold_columns": [
+        "cast(count(distinct t2.id) as real) / count(distinct t1.id)"
+      ],
+      "pred_data": {
+        "columns": [
+          "count(owneruserid)",
+          "count(userid)"
+        ],
+        "rows": [
+          [
+            3,
+            8
+          ]
+        ]
+      },
+      "gold_data": {
+        "columns": [
+          "cast(count(distinct t2.id) as real) / count(distinct t1.id)"
+        ],
+        "rows": [
+          [
+            0.375
+          ]
+        ]
+      }
+    },
+    "accuracy": 0.0
+  },
+  "task_249": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_25": {
+    "correct": false,
+    "error_type": "missing_prediction",
+    "error_detail": "prediction.csv not found",
+    "accuracy": 0.0
+  },
+  "task_250": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_257": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_259": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_26": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_261": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_269": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_27": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_283": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_287": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_292": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_303": {
+    "correct": false,
+    "error_type": "missing_or_mismatched_gold_column",
+    "error_detail": {
+      "gold_column_index": 0,
+      "pred_columns": [
+        "percentage"
+      ],
+      "gold_columns": [
+        "cast(count(case when t1.country = 'germany' then t2.circuitid end) as real) * 100 / count(t2.circuitid)"
+      ],
+      "pred_data": {
+        "columns": [
+          "percentage"
+        ],
+        "rows": [
+          [
+            52.17
+          ]
+        ]
+      },
+      "gold_data": {
+        "columns": [
+          "cast(count(case when t1.country = 'germany' then t2.circuitid end) as real) * 100 / count(t2.circuitid)"
+        ],
+        "rows": [
+          [
+            52.17391304347826
+          ]
+        ]
+      }
+    },
+    "accuracy": 0.0
+  },
+  "task_305": {
+    "correct": false,
+    "error_type": "missing_prediction",
+    "error_detail": "prediction.csv not found",
+    "accuracy": 0.0
+  },
+  "task_330": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_344": {
+    "correct": false,
+    "error_type": "missing_prediction",
+    "error_detail": "prediction.csv not found",
+    "accuracy": 0.0
+  },
+  "task_349": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_350": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_352": {
+    "correct": false,
+    "error_type": "missing_prediction",
+    "error_detail": "prediction.csv not found",
+    "accuracy": 0.0
+  },
+  "task_355": {
+    "correct": false,
+    "error_type": "missing_or_mismatched_gold_column",
+    "error_detail": {
+      "gold_column_index": 0,
+      "pred_columns": [
+        "member_name",
+        "cost"
+      ],
+      "gold_columns": [
+        "first_name",
+        "last_name",
+        "cost"
+      ],
+      "pred_data": {
+        "columns": [
+          "member_name",
+          "cost"
+        ],
+        "rows": [
+          [
+            "Elijah Allen",
+            28.15
+          ]
+        ]
+      },
+      "gold_data": {
+        "columns": [
+          "first_name",
+          "last_name",
+          "cost"
+        ],
+        "rows": [
+          [
+            "Elijah",
+            "Allen",
+            28.15
+          ]
+        ]
+      }
+    },
+    "accuracy": 0.0
+  },
+  "task_379": {
+    "correct": false,
+    "error_type": "missing_prediction",
+    "error_detail": "prediction.csv not found",
+    "accuracy": 0.0
+  },
+  "task_38": {
+    "correct": false,
+    "error_type": "missing_prediction",
+    "error_detail": "prediction.csv not found",
+    "accuracy": 0.0
+  },
+  "task_396": {
+    "correct": false,
+    "error_type": "missing_prediction",
+    "error_detail": "prediction.csv not found",
+    "accuracy": 0.0
+  },
+  "task_408": {
+    "correct": false,
+    "error_type": "missing_or_mismatched_gold_column",
+    "error_detail": {
+      "gold_column_index": 0,
+      "pred_columns": [
+        "percentage_faster"
+      ],
+      "gold_columns": [
+        "(cast((select time_seconds from last_driver_incremental) as real) * 100) / (select time_seconds + (select time_seconds from last_driver_incremental) from champion_time)"
+      ],
+      "pred_data": {
+        "columns": [
+          "percentage_faster"
+        ],
+        "rows": [
+          [
+            0.3166
+          ]
+        ]
+      },
+      "gold_data": {
+        "columns": [
+          "(cast((select time_seconds from last_driver_incremental) as real) * 100) / (select time_seconds + (select time_seconds from last_driver_incremental) from champion_time)"
+        ],
+        "rows": [
+          [
+            0.3155573228603009
+          ]
+        ]
+      }
+    },
+    "accuracy": 0.0
+  },
+  "task_415": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_418": {
+    "correct": false,
+    "error_type": "missing_prediction",
+    "error_detail": "prediction.csv not found",
+    "accuracy": 0.0
+  },
+  "task_420": {
+    "correct": false,
+    "error_type": "missing_prediction",
+    "error_detail": "prediction.csv not found",
+    "accuracy": 0.0
+  },
+  "task_64": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_67": {
+    "correct": false,
+    "error_type": "missing_or_mismatched_gold_column",
+    "error_detail": {
+      "gold_column_index": 0,
+      "pred_columns": [
+        "avg(weight_kg)"
+      ],
+      "gold_columns": [
+        "avg(t1.weight_kg)"
+      ],
+      "pred_data": {
+        "columns": [
+          "avg(weight_kg)"
+        ],
+        "rows": [
+          [
+            78.51
+          ]
+        ]
+      },
+      "gold_data": {
+        "columns": [
+          "avg(t1.weight_kg)"
+        ],
+        "rows": [
+          [
+            60.77956989247312
+          ]
+        ]
+      }
+    },
+    "accuracy": 0.0
+  },
+  "task_74": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_75": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_80": {
+    "correct": false,
+    "error_type": "missing_or_mismatched_gold_column",
+    "error_detail": {
+      "gold_column_index": 0,
+      "pred_columns": [
+        "number"
+      ],
+      "gold_columns": [
+        "number"
+      ],
+      "pred_data": {
+        "columns": [
+          "number"
+        ],
+        "rows": [
+          [
+            3
+          ]
+        ]
+      },
+      "gold_data": {
+        "columns": [
+          "number"
+        ],
+        "rows": [
+          [
+            3
+          ],
+          [
+            5
+          ]
+        ]
+      }
+    },
+    "accuracy": 0.0
+  },
+  "task_86": {
+    "correct": false,
+    "error_type": "missing_prediction",
+    "error_detail": "prediction.csv not found",
+    "accuracy": 0.0
+  },
+  "task_89": {
+    "correct": false,
+    "error_type": "missing_or_mismatched_gold_column",
+    "error_detail": {
+      "gold_column_index": 0,
+      "pred_columns": [
+        "time"
+      ],
+      "gold_columns": [
+        "time"
+      ],
+      "pred_data": {
+        "columns": [
+          "time"
+        ],
+        "rows": [
+          [
+            "1:32:12.328"
+          ]
+        ]
+      },
+      "gold_data": {
+        "columns": [
+          "time"
+        ],
+        "rows": [
+          [
+            16.445
+          ]
+        ]
+      }
+    },
+    "accuracy": 0.0
+  }
+}

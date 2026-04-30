@@ -167,17 +167,17 @@ def create_default_tool_registry() -> ToolRegistry:
         "read_csv": ToolSpec(
             name="read_csv",
             description="Read a preview of a CSV file inside context.",
-            input_schema={"path": "relative/path/to/file.csv", "max_rows": 20},
+            input_schema={"path": "relative/path/to/file.csv", "max_rows": 50},
         ),
         "read_doc": ToolSpec(
             name="read_doc",
             description="Read a text-like document inside context.",
-            input_schema={"path": "relative/path/to/file.md", "max_chars": 4000},
+            input_schema={"path": "relative/path/to/file.md", "max_chars": 12000},
         ),
         "read_json": ToolSpec(
             name="read_json",
             description="Read a preview of a JSON file inside context.",
-            input_schema={"path": "relative/path/to/file.json", "max_chars": 4000},
+            input_schema={"path": "relative/path/to/file.json", "max_chars": 12000},
         ),
     }
     handlers = {

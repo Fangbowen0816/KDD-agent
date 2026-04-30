@@ -77,7 +77,7 @@ def read_json_preview(task: PublicTask, relative_path: str, *, max_chars: int = 
     }
 
 
-def read_doc_preview(task: PublicTask, relative_path: str, *, max_chars: int = 4000) -> dict[str, object]:
+def read_doc_preview(task: PublicTask, relative_path: str, *, max_chars: int = 10000) -> dict[str, object]:
     path = resolve_context_path(task, relative_path)
     text = path.read_text(errors="replace")
     return {

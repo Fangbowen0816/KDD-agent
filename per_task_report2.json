@@ -1,0 +1,2842 @@
+{
+  "summary.json": {
+    "correct": false,
+    "error_type": "missing_prediction",
+    "error_detail": "prediction.csv not found",
+    "accuracy": 0.0
+  },
+  "task_11": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_145": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_163": {
+    "correct": false,
+    "error_type": "missing_or_mismatched_gold_column",
+    "error_detail": {
+      "gold_column_index": 0,
+      "pred_columns": [
+        "expense_type",
+        "total_value"
+      ],
+      "gold_columns": [
+        "type",
+        "sum(t3.cost)"
+      ],
+      "pred_data": {
+        "columns": [
+          "expense_type",
+          "total_value"
+        ],
+        "rows": [
+          [
+            "Advertisement",
+            54.25
+          ],
+          [
+            "Food",
+            121.14
+          ]
+        ]
+      },
+      "gold_data": {
+        "columns": [
+          "type",
+          "sum(t3.cost)"
+        ],
+        "rows": [
+          [
+            "Meeting",
+            175.39
+          ]
+        ]
+      }
+    },
+    "accuracy": 0.0
+  },
+  "task_169": {
+    "correct": false,
+    "error_type": "missing_or_mismatched_gold_column",
+    "error_detail": {
+      "gold_column_index": 0,
+      "pred_columns": [
+        "average_monthly_consumption"
+      ],
+      "gold_columns": [
+        "avg(t2.consumption) / 12"
+      ],
+      "pred_data": {
+        "columns": [
+          "average_monthly_consumption"
+        ],
+        "rows": [
+          [
+            82027220.30416964
+          ]
+        ]
+      },
+      "gold_data": {
+        "columns": [
+          "avg(t2.consumption) / 12"
+        ],
+        "rows": [
+          [
+            459.9562642871061
+          ]
+        ]
+      }
+    },
+    "accuracy": 0.0
+  },
+  "task_173": {
+    "correct": false,
+    "error_type": "missing_prediction",
+    "error_detail": "prediction.csv not found",
+    "accuracy": 0.0
+  },
+  "task_180": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_19": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_194": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_196": {
+    "correct": false,
+    "error_type": "missing_or_mismatched_gold_column",
+    "error_detail": {
+      "gold_column_index": 0,
+      "pred_columns": [
+        "avg(bond_id)"
+      ],
+      "gold_columns": [
+        "cast(count(t2.bond_id) as real) / count(t1.atom_id)"
+      ],
+      "pred_data": {
+        "columns": [
+          "avg(bond_id)"
+        ],
+        "rows": [
+          [
+            2.0
+          ]
+        ]
+      },
+      "gold_data": {
+        "columns": [
+          "cast(count(t2.bond_id) as real) / count(t1.atom_id)"
+        ],
+        "rows": [
+          [
+            1.0
+          ]
+        ]
+      }
+    },
+    "accuracy": 0.0
+  },
+  "task_199": {
+    "correct": false,
+    "error_type": "missing_or_mismatched_gold_column",
+    "error_detail": {
+      "gold_column_index": 0,
+      "pred_columns": [
+        "school name",
+        "charter funding type"
+      ],
+      "gold_columns": [
+        "sname",
+        "charter funding type"
+      ],
+      "pred_data": {
+        "columns": [
+          "school name",
+          "charter funding type"
+        ],
+        "rows": [
+          [
+            "Arlington High",
+            NaN
+          ],
+          [
+            "Come Back Kids",
+            "Locally funded"
+          ],
+          [
+            "Gateway College and Career Academy",
+            "Directly funded"
+          ],
+          [
+            "John W. North High",
+            NaN
+          ],
+          [
+            "Martin Luther King Jr. High",
+            NaN
+          ],
+          [
+            "Opportunity Program",
+            NaN
+          ],
+          [
+            "Polytechnic High",
+            NaN
+          ],
+          [
+            "Ramona High",
+            NaN
+          ],
+          [
+            "River Springs Charter",
+            "Directly funded"
+          ],
+          [
+            "Riverside County Education Academy",
+            "Locally funded"
+          ],
+          [
+            "Riverside Virtual",
+            NaN
+          ],
+          [
+            "Summit View Independent Study",
+            NaN
+          ]
+        ]
+      },
+      "gold_data": {
+        "columns": [
+          "sname",
+          "charter funding type"
+        ],
+        "rows": [
+          [
+            "Arlington High",
+            NaN
+          ],
+          [
+            "John W. North High",
+            NaN
+          ],
+          [
+            "Martin Luther King Jr. High",
+            NaN
+          ],
+          [
+            "Polytechnic High",
+            NaN
+          ],
+          [
+            "Ramona High",
+            NaN
+          ],
+          [
+            "River Springs Charter",
+            "Directly funded"
+          ]
+        ]
+      }
+    },
+    "accuracy": 0.0
+  },
+  "task_200": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_214": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_218": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_22": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_24": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_243": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_249": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_25": {
+    "correct": false,
+    "error_type": "missing_or_mismatched_gold_column",
+    "error_detail": {
+      "gold_column_index": 0,
+      "pred_columns": [
+        "event_name"
+      ],
+      "gold_columns": [
+        "event_name"
+      ],
+      "pred_data": {
+        "columns": [
+          "event_name"
+        ],
+        "rows": [
+          [
+            "March Meeting"
+          ],
+          [
+            "Officers meeting - January"
+          ],
+          [
+            "Spring Elections"
+          ],
+          [
+            "Officers meeting - March"
+          ],
+          [
+            "Women's Soccer"
+          ],
+          [
+            "April Speaker"
+          ],
+          [
+            "Laugh Out Loud"
+          ],
+          [
+            "March Speaker"
+          ],
+          [
+            "Football game"
+          ],
+          [
+            "February Speaker"
+          ],
+          [
+            "Football game"
+          ],
+          [
+            "Laugh Out Loud"
+          ],
+          [
+            "Fall Elections"
+          ],
+          [
+            "Officers meeting - April"
+          ],
+          [
+            "Women's Lacrosse"
+          ],
+          [
+            "Habitat for Humanity"
+          ],
+          [
+            "Officers meeting - February"
+          ],
+          [
+            "January Meeting"
+          ],
+          [
+            "Lacrosse game"
+          ],
+          [
+            "February Meeting"
+          ],
+          [
+            "Fall Budget Review"
+          ],
+          [
+            "Graffiti Removal"
+          ],
+          [
+            "Kid's Care"
+          ],
+          [
+            "Community Theater"
+          ],
+          [
+            "January Speaker"
+          ],
+          [
+            "Food Bank"
+          ],
+          [
+            "Yearly Wrap-up"
+          ],
+          [
+            "Spring Budget Review"
+          ],
+          [
+            "Community Theater"
+          ],
+          [
+            "April Meeting"
+          ],
+          [
+            "Baseball game"
+          ]
+        ]
+      },
+      "gold_data": {
+        "columns": [
+          "event_name"
+        ],
+        "rows": [
+          [
+            "November Speaker"
+          ],
+          [
+            "October Speaker"
+          ],
+          [
+            "September Speaker"
+          ]
+        ]
+      }
+    },
+    "accuracy": 0.0
+  },
+  "task_250": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_257": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_259": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_26": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_261": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_269": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_27": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_283": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_287": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_292": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_303": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_305": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_330": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_344": {
+    "correct": false,
+    "error_type": "missing_prediction",
+    "error_detail": "prediction.csv not found",
+    "accuracy": 0.0
+  },
+  "task_349": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_350": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_352": {
+    "correct": false,
+    "error_type": "missing_prediction",
+    "error_detail": "prediction.csv not found",
+    "accuracy": 0.0
+  },
+  "task_355": {
+    "correct": false,
+    "error_type": "missing_or_mismatched_gold_column",
+    "error_detail": {
+      "gold_column_index": 0,
+      "pred_columns": [
+        "full_name",
+        "cost"
+      ],
+      "gold_columns": [
+        "first_name",
+        "last_name",
+        "cost"
+      ],
+      "pred_data": {
+        "columns": [
+          "full_name",
+          "cost"
+        ],
+        "rows": [
+          [
+            "Elijah Allen",
+            28.15
+          ]
+        ]
+      },
+      "gold_data": {
+        "columns": [
+          "first_name",
+          "last_name",
+          "cost"
+        ],
+        "rows": [
+          [
+            "Elijah",
+            "Allen",
+            28.15
+          ]
+        ]
+      }
+    },
+    "accuracy": 0.0
+  },
+  "task_379": {
+    "correct": false,
+    "error_type": "missing_prediction",
+    "error_detail": "prediction.csv not found",
+    "accuracy": 0.0
+  },
+  "task_38": {
+    "correct": false,
+    "error_type": "missing_or_mismatched_gold_column",
+    "error_detail": {
+      "gold_column_index": 0,
+      "pred_columns": [
+        "trans_id",
+        "account_id",
+        "date",
+        "type",
+        "operation",
+        "amount",
+        "balance",
+        "k_symbol"
+      ],
+      "gold_columns": [
+        "trans_id"
+      ],
+      "pred_data": {
+        "columns": [
+          "trans_id",
+          "account_id",
+          "date",
+          "type",
+          "operation",
+          "amount",
+          "balance",
+          "k_symbol"
+        ],
+        "rows": [
+          [
+            816173,
+            2779,
+            "1993-12-02",
+            "VYDAJ",
+            "VYBER",
+            800,
+            42072,
+            NaN
+          ],
+          [
+            816174,
+            2779,
+            "1994-12-29",
+            "VYDAJ",
+            "VYBER",
+            2400,
+            59207,
+            NaN
+          ],
+          [
+            816175,
+            2779,
+            "1995-12-05",
+            "VYDAJ",
+            "VYBER",
+            4320,
+            45682,
+            NaN
+          ],
+          [
+            816176,
+            2779,
+            "1996-12-01",
+            "VYDAJ",
+            "VYBER KARTOU",
+            1400,
+            56704,
+            NaN
+          ],
+          [
+            816177,
+            2779,
+            "1997-12-29",
+            "VYDAJ",
+            "VYBER KARTOU",
+            1600,
+            75777,
+            NaN
+          ],
+          [
+            816178,
+            2779,
+            "1998-12-23",
+            "VYDAJ",
+            "VYBER KARTOU",
+            3700,
+            77834,
+            NaN
+          ],
+          [
+            816181,
+            2779,
+            "1993-11-20",
+            "VYDAJ",
+            "VYBER",
+            600,
+            42711,
+            NaN
+          ],
+          [
+            816185,
+            2779,
+            "1994-02-24",
+            "VYDAJ",
+            "VYBER",
+            3480,
+            40506,
+            NaN
+          ],
+          [
+            816186,
+            2779,
+            "1994-12-17",
+            "VYDAJ",
+            "VYBER",
+            1560,
+            61607,
+            NaN
+          ],
+          [
+            816187,
+            2779,
+            "1994-09-01",
+            "VYDAJ",
+            "VYBER",
+            1440,
+            47821,
+            NaN
+          ],
+          [
+            816188,
+            2779,
+            "1994-08-28",
+            "VYDAJ",
+            "VYBER",
+            4680,
+            49060,
+            NaN
+          ],
+          [
+            816189,
+            2779,
+            "1994-08-17",
+            "VYDAJ",
+            "VYBER",
+            1440,
+            53740,
+            NaN
+          ],
+          [
+            816190,
+            2779,
+            "1994-02-09",
+            "VYDAJ",
+            "VYBER",
+            2880,
+            26678,
+            NaN
+          ],
+          [
+            816191,
+            2779,
+            "1994-05-03",
+            "VYDAJ",
+            "VYBER",
+            5400,
+            29628,
+            NaN
+          ],
+          [
+            816192,
+            2779,
+            "1995-05-26",
+            "VYDAJ",
+            "VYBER",
+            2640,
+            58794,
+            NaN
+          ],
+          [
+            816193,
+            2779,
+            "1995-06-25",
+            "VYDAJ",
+            "VYBER",
+            5040,
+            58733,
+            NaN
+          ],
+          [
+            816194,
+            2779,
+            "1995-03-06",
+            "VYDAJ",
+            "VYBER",
+            3240,
+            42837,
+            NaN
+          ],
+          [
+            816195,
+            2779,
+            "1996-03-25",
+            "VYDAJ",
+            "VYBER",
+            3240,
+            58351,
+            NaN
+          ],
+          [
+            816196,
+            2779,
+            "1996-10-10",
+            "VYDAJ",
+            "VYBER",
+            4680,
+            41854,
+            NaN
+          ],
+          [
+            816197,
+            2779,
+            "1997-07-19",
+            "VYDAJ",
+            "VYBER KARTOU",
+            700,
+            79302,
+            NaN
+          ],
+          [
+            816198,
+            2779,
+            "1997-09-27",
+            "VYDAJ",
+            "VYBER KARTOU",
+            1400,
+            70375,
+            NaN
+          ],
+          [
+            816199,
+            2779,
+            "1997-10-20",
+            "VYDAJ",
+            "VYBER KARTOU",
+            1900,
+            77766,
+            NaN
+          ],
+          [
+            816200,
+            2779,
+            "1997-03-26",
+            "VYDAJ",
+            "VYBER KARTOU",
+            3800,
+            59316,
+            NaN
+          ],
+          [
+            816201,
+            2779,
+            "1998-03-26",
+            "VYDAJ",
+            "VYBER KARTOU",
+            2200,
+            72685,
+            NaN
+          ],
+          [
+            816202,
+            2779,
+            "1998-05-11",
+            "VYDAJ",
+            "VYBER KARTOU",
+            800,
+            79556,
+            NaN
+          ],
+          [
+            816203,
+            2779,
+            "1998-01-24",
+            "VYDAJ",
+            "VYBER",
+            4560,
+            69518,
+            NaN
+          ],
+          [
+            816204,
+            2779,
+            "1998-01-19",
+            "VYDAJ",
+            "VYBER KARTOU",
+            4000,
+            81078,
+            NaN
+          ],
+          [
+            816216,
+            2779,
+            "1993-11-30",
+            "VYDAJ",
+            "VYBER",
+            15,
+            42872,
+            "SLUZBY"
+          ],
+          [
+            816217,
+            2779,
+            "1993-12-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            44086,
+            "SLUZBY"
+          ],
+          [
+            816218,
+            2779,
+            "1994-01-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            37869,
+            "SLUZBY"
+          ],
+          [
+            816219,
+            2779,
+            "1994-02-28",
+            "VYDAJ",
+            "VYBER",
+            15,
+            40656,
+            "SLUZBY"
+          ],
+          [
+            816220,
+            2779,
+            "1994-03-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            39400,
+            "SLUZBY"
+          ],
+          [
+            816221,
+            2779,
+            "1994-04-30",
+            "VYDAJ",
+            "VYBER",
+            15,
+            35028,
+            "SLUZBY"
+          ],
+          [
+            816222,
+            2779,
+            "1994-05-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            33555,
+            "SLUZBY"
+          ],
+          [
+            816223,
+            2779,
+            "1994-06-30",
+            "VYDAJ",
+            "VYBER",
+            15,
+            53681,
+            "SLUZBY"
+          ],
+          [
+            816224,
+            2779,
+            "1994-07-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            54783,
+            "SLUZBY"
+          ],
+          [
+            816225,
+            2779,
+            "1994-08-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            49261,
+            "SLUZBY"
+          ],
+          [
+            816226,
+            2779,
+            "1994-09-30",
+            "VYDAJ",
+            "VYBER",
+            15,
+            54013,
+            "SLUZBY"
+          ],
+          [
+            816227,
+            2779,
+            "1994-10-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            53909,
+            "SLUZBY"
+          ],
+          [
+            816228,
+            2779,
+            "1994-11-30",
+            "VYDAJ",
+            "VYBER",
+            15,
+            56116,
+            "SLUZBY"
+          ],
+          [
+            816229,
+            2779,
+            "1994-12-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            59436,
+            "SLUZBY"
+          ],
+          [
+            816230,
+            2779,
+            "1995-01-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            58248,
+            "SLUZBY"
+          ],
+          [
+            816231,
+            2779,
+            "1995-02-28",
+            "VYDAJ",
+            "VYBER",
+            15,
+            54344,
+            "SLUZBY"
+          ],
+          [
+            816232,
+            2779,
+            "1995-03-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            57611,
+            "SLUZBY"
+          ],
+          [
+            816233,
+            2779,
+            "1995-04-30",
+            "VYDAJ",
+            "VYBER",
+            15,
+            62337,
+            "SLUZBY"
+          ],
+          [
+            816234,
+            2779,
+            "1995-05-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            59022,
+            "SLUZBY"
+          ],
+          [
+            816235,
+            2779,
+            "1995-06-30",
+            "VYDAJ",
+            "VYBER",
+            15,
+            58956,
+            "SLUZBY"
+          ],
+          [
+            816236,
+            2779,
+            "1995-07-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            58568,
+            "SLUZBY"
+          ],
+          [
+            816237,
+            2779,
+            "1995-08-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            56774,
+            "SLUZBY"
+          ],
+          [
+            816238,
+            2779,
+            "1995-09-30",
+            "VYDAJ",
+            "VYBER",
+            15,
+            58283,
+            "SLUZBY"
+          ],
+          [
+            816239,
+            2779,
+            "1995-10-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            59498,
+            "SLUZBY"
+          ],
+          [
+            816240,
+            2779,
+            "1995-11-30",
+            "VYDAJ",
+            "VYBER",
+            15,
+            58007,
+            "SLUZBY"
+          ],
+          [
+            816241,
+            2779,
+            "1995-12-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            63563,
+            "SLUZBY"
+          ],
+          [
+            816242,
+            2779,
+            "1996-01-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            49987,
+            "SLUZBY"
+          ],
+          [
+            816243,
+            2779,
+            "1996-02-29",
+            "VYDAJ",
+            "VYBER",
+            15,
+            59194,
+            "SLUZBY"
+          ],
+          [
+            816244,
+            2779,
+            "1996-03-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            58575,
+            "SLUZBY"
+          ],
+          [
+            816245,
+            2779,
+            "1996-04-30",
+            "VYDAJ",
+            "VYBER",
+            15,
+            60693,
+            "SLUZBY"
+          ],
+          [
+            816246,
+            2779,
+            "1996-05-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            57521,
+            "SLUZBY"
+          ],
+          [
+            816247,
+            2779,
+            "1996-06-30",
+            "VYDAJ",
+            "VYBER",
+            15,
+            61635,
+            "SLUZBY"
+          ],
+          [
+            816248,
+            2779,
+            "1996-07-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            55886,
+            "SLUZBY"
+          ],
+          [
+            816249,
+            2779,
+            "1996-08-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            57114,
+            "SLUZBY"
+          ],
+          [
+            816250,
+            2779,
+            "1996-09-30",
+            "VYDAJ",
+            "VYBER",
+            15,
+            54845,
+            "SLUZBY"
+          ],
+          [
+            816251,
+            2779,
+            "1996-10-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            55877,
+            "SLUZBY"
+          ],
+          [
+            816252,
+            2779,
+            "1996-11-30",
+            "VYDAJ",
+            "VYBER",
+            15,
+            58104,
+            "SLUZBY"
+          ],
+          [
+            816253,
+            2779,
+            "1996-12-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            63309,
+            "SLUZBY"
+          ],
+          [
+            816254,
+            2779,
+            "1997-01-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            63864,
+            "SLUZBY"
+          ],
+          [
+            816255,
+            2779,
+            "1997-02-28",
+            "VYDAJ",
+            "VYBER",
+            15,
+            62319,
+            "SLUZBY"
+          ],
+          [
+            816256,
+            2779,
+            "1997-03-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            59571,
+            "SLUZBY"
+          ],
+          [
+            816257,
+            2779,
+            "1997-04-30",
+            "VYDAJ",
+            "VYBER",
+            15,
+            61611,
+            "SLUZBY"
+          ],
+          [
+            816258,
+            2779,
+            "1997-05-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            67363,
+            "SLUZBY"
+          ],
+          [
+            816259,
+            2779,
+            "1997-06-30",
+            "VYDAJ",
+            "VYBER",
+            15,
+            71005,
+            "SLUZBY"
+          ],
+          [
+            816260,
+            2779,
+            "1997-07-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            71889,
+            "SLUZBY"
+          ],
+          [
+            816261,
+            2779,
+            "1997-08-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            74178,
+            "SLUZBY"
+          ],
+          [
+            816262,
+            2779,
+            "1997-09-30",
+            "VYDAJ",
+            "VYBER",
+            15,
+            70669,
+            "SLUZBY"
+          ],
+          [
+            816263,
+            2779,
+            "1997-10-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            70548,
+            "SLUZBY"
+          ],
+          [
+            816264,
+            2779,
+            "1997-11-30",
+            "VYDAJ",
+            "VYBER",
+            15,
+            71426,
+            "SLUZBY"
+          ],
+          [
+            816265,
+            2779,
+            "1997-12-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            76081,
+            "SLUZBY"
+          ],
+          [
+            816266,
+            2779,
+            "1998-01-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            69812,
+            "SLUZBY"
+          ],
+          [
+            816267,
+            2779,
+            "1998-02-28",
+            "VYDAJ",
+            "VYBER",
+            15,
+            72688,
+            "SLUZBY"
+          ],
+          [
+            816268,
+            2779,
+            "1998-03-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            72975,
+            "SLUZBY"
+          ],
+          [
+            816269,
+            2779,
+            "1998-04-30",
+            "VYDAJ",
+            "VYBER",
+            15,
+            71359,
+            "SLUZBY"
+          ],
+          [
+            816270,
+            2779,
+            "1998-05-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            72638,
+            "SLUZBY"
+          ],
+          [
+            816271,
+            2779,
+            "1998-06-30",
+            "VYDAJ",
+            "VYBER",
+            15,
+            76190,
+            "SLUZBY"
+          ],
+          [
+            816272,
+            2779,
+            "1998-07-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            73382,
+            "SLUZBY"
+          ],
+          [
+            816273,
+            2779,
+            "1998-08-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            73466,
+            "SLUZBY"
+          ],
+          [
+            816274,
+            2779,
+            "1998-09-30",
+            "VYDAJ",
+            "VYBER",
+            15,
+            79460,
+            "SLUZBY"
+          ],
+          [
+            816275,
+            2779,
+            "1998-10-31",
+            "VYDAJ",
+            "VYBER",
+            15,
+            81671,
+            "SLUZBY"
+          ],
+          [
+            816276,
+            2779,
+            "1998-11-30",
+            "VYDAJ",
+            "VYBER",
+            15,
+            80283,
+            "SLUZBY"
+          ],
+          [
+            816278,
+            2779,
+            "1993-08-14",
+            "VYDAJ",
+            "VYBER",
+            7900,
+            30664,
+            NaN
+          ],
+          [
+            816279,
+            2779,
+            "1993-09-13",
+            "VYDAJ",
+            "VYBER",
+            9700,
+            38384,
+            NaN
+          ],
+          [
+            816280,
+            2779,
+            "1993-10-13",
+            "VYDAJ",
+            "VYBER",
+            15600,
+            40239,
+            NaN
+          ],
+          [
+            816281,
+            2779,
+            "1993-11-12",
+            "VYDAJ",
+            "VYBER",
+            14400,
+            43311,
+            NaN
+          ],
+          [
+            816282,
+            2779,
+            "1993-12-12",
+            "VYDAJ",
+            "VYBER",
+            15800,
+            43923,
+            NaN
+          ],
+          [
+            816283,
+            2779,
+            "1994-01-11",
+            "VYDAJ",
+            "VYBER",
+            15400,
+            37683,
+            NaN
+          ],
+          [
+            816284,
+            2779,
+            "1994-03-12",
+            "VYDAJ",
+            "VYBER",
+            10400,
+            39253,
+            NaN
+          ],
+          [
+            816285,
+            2779,
+            "1994-04-11",
+            "VYDAJ",
+            "VYBER",
+            13500,
+            34897,
+            NaN
+          ],
+          [
+            816286,
+            2779,
+            "1994-05-11",
+            "VYDAJ",
+            "VYBER",
+            5200,
+            33425,
+            NaN
+          ],
+          [
+            816288,
+            2779,
+            "1994-07-10",
+            "VYDAJ",
+            "VYBER",
+            8100,
+            37270,
+            NaN
+          ],
+          [
+            816289,
+            2779,
+            "1994-08-09",
+            "VYDAJ",
+            "VYBER",
+            8600,
+            37872,
+            NaN
+          ],
+          [
+            816290,
+            2779,
+            "1994-09-08",
+            "VYDAJ",
+            "VYBER",
+            3000,
+            36510,
+            NaN
+          ],
+          [
+            816291,
+            2779,
+            "1994-10-08",
+            "VYDAJ",
+            "VYBER",
+            9300,
+            36402,
+            NaN
+          ],
+          [
+            816292,
+            2779,
+            "1994-11-07",
+            "VYDAJ",
+            "VYBER",
+            7000,
+            38632,
+            NaN
+          ],
+          [
+            816293,
+            2779,
+            "1994-12-07",
+            "VYDAJ",
+            "VYBER",
+            10600,
+            37205,
+            NaN
+          ],
+          [
+            816294,
+            2779,
+            "1995-01-06",
+            "VYDAJ",
+            "VYBER",
+            10400,
+            40769,
+            NaN
+          ],
+          [
+            816295,
+            2779,
+            "1995-02-05",
+            "VYDAJ",
+            "VYBER",
+            13100,
+            45148,
+            NaN
+          ],
+          [
+            816296,
+            2779,
+            "1995-03-07",
+            "VYDAJ",
+            "VYBER",
+            2700,
+            40127,
+            NaN
+          ],
+          [
+            816297,
+            2779,
+            "1995-04-06",
+            "VYDAJ",
+            "VYBER",
+            4500,
+            53106,
+            NaN
+          ],
+          [
+            816298,
+            2779,
+            "1995-05-06",
+            "VYDAJ",
+            "VYBER",
+            9900,
+            44170,
+            NaN
+          ],
+          [
+            816299,
+            2779,
+            "1995-06-05",
+            "VYDAJ",
+            "VYBER",
+            12900,
+            46117,
+            NaN
+          ],
+          [
+            816300,
+            2779,
+            "1995-07-05",
+            "VYDAJ",
+            "VYBER",
+            9600,
+            49356,
+            NaN
+          ],
+          [
+            816301,
+            2779,
+            "1995-08-04",
+            "VYDAJ",
+            "VYBER",
+            11000,
+            47568,
+            NaN
+          ],
+          [
+            816302,
+            2779,
+            "1995-09-03",
+            "VYDAJ",
+            "VYBER",
+            7700,
+            49074,
+            NaN
+          ],
+          [
+            816303,
+            2779,
+            "1995-10-03",
+            "VYDAJ",
+            "VYBER",
+            8000,
+            50283,
+            NaN
+          ],
+          [
+            816304,
+            2779,
+            "1995-11-02",
+            "VYDAJ",
+            "VYBER",
+            10700,
+            48798,
+            NaN
+          ],
+          [
+            816305,
+            2779,
+            "1995-12-02",
+            "VYDAJ",
+            "VYBER",
+            8000,
+            50007,
+            NaN
+          ],
+          [
+            816306,
+            2779,
+            "1996-01-01",
+            "VYDAJ",
+            "VYBER",
+            11200,
+            52363,
+            NaN
+          ],
+          [
+            816307,
+            2779,
+            "1996-01-31",
+            "VYDAJ",
+            "VYBER",
+            11600,
+            50001,
+            NaN
+          ],
+          [
+            816308,
+            2779,
+            "1996-03-01",
+            "VYDAJ",
+            "VYBER",
+            6600,
+            52594,
+            NaN
+          ],
+          [
+            816309,
+            2779,
+            "1996-03-31",
+            "VYDAJ",
+            "VYBER",
+            7100,
+            51475,
+            NaN
+          ],
+          [
+            816310,
+            2779,
+            "1996-04-30",
+            "VYDAJ",
+            "VYBER",
+            5500,
+            55193,
+            NaN
+          ],
+          [
+            816311,
+            2779,
+            "1996-05-30",
+            "VYDAJ",
+            "VYBER",
+            6900,
+            57290,
+            NaN
+          ],
+          [
+            816312,
+            2779,
+            "1996-06-29",
+            "VYDAJ",
+            "VYBER",
+            13800,
+            61372,
+            NaN
+          ],
+          [
+            816313,
+            2779,
+            "1996-07-29",
+            "VYDAJ",
+            "VYBER",
+            15000,
+            55632,
+            NaN
+          ],
+          [
+            816314,
+            2779,
+            "1996-08-28",
+            "VYDAJ",
+            "VYBER",
+            8000,
+            56883,
+            NaN
+          ],
+          [
+            816315,
+            2779,
+            "1996-09-27",
+            "VYDAJ",
+            "VYBER",
+            11500,
+            54611,
+            NaN
+          ],
+          [
+            816316,
+            2779,
+            "1996-10-27",
+            "VYDAJ",
+            "VYBER",
+            3500,
+            55662,
+            NaN
+          ],
+          [
+            816317,
+            2779,
+            "1996-11-26",
+            "VYDAJ",
+            "VYBER",
+            7000,
+            57874,
+            NaN
+          ],
+          [
+            816318,
+            2779,
+            "1996-12-26",
+            "VYDAJ",
+            "VYBER",
+            11300,
+            63055,
+            NaN
+          ],
+          [
+            816319,
+            2779,
+            "1997-01-25",
+            "VYDAJ",
+            "VYBER",
+            8700,
+            63606,
+            NaN
+          ],
+          [
+            816320,
+            2779,
+            "1997-02-24",
+            "VYDAJ",
+            "VYBER",
+            10800,
+            62061,
+            NaN
+          ],
+          [
+            816321,
+            2779,
+            "1997-03-26",
+            "VYDAJ",
+            "VYBER",
+            8200,
+            63116,
+            NaN
+          ],
+          [
+            816322,
+            2779,
+            "1997-04-25",
+            "VYDAJ",
+            "VYBER",
+            7200,
+            61368,
+            NaN
+          ],
+          [
+            816323,
+            2779,
+            "1997-05-25",
+            "VYDAJ",
+            "VYBER KARTOU",
+            3500,
+            67108,
+            NaN
+          ],
+          [
+            816324,
+            2779,
+            "1997-06-24",
+            "VYDAJ",
+            "VYBER",
+            14300,
+            70714,
+            NaN
+          ],
+          [
+            816325,
+            2779,
+            "1997-07-24",
+            "VYDAJ",
+            "VYBER",
+            7700,
+            71602,
+            NaN
+          ],
+          [
+            816326,
+            2779,
+            "1997-08-23",
+            "VYDAJ",
+            "VYBER",
+            7000,
+            73886,
+            NaN
+          ],
+          [
+            816327,
+            2779,
+            "1997-09-22",
+            "VYDAJ",
+            "VYBER",
+            11400,
+            71775,
+            NaN
+          ],
+          [
+            816328,
+            2779,
+            "1997-10-22",
+            "VYDAJ",
+            "VYBER",
+            7500,
+            70266,
+            NaN
+          ],
+          [
+            816329,
+            2779,
+            "1997-11-21",
+            "VYDAJ",
+            "VYBER",
+            8400,
+            71145,
+            NaN
+          ],
+          [
+            816330,
+            2779,
+            "1997-12-21",
+            "VYDAJ",
+            "VYBER",
+            11700,
+            77377,
+            NaN
+          ],
+          [
+            816331,
+            2779,
+            "1998-01-20",
+            "VYDAJ",
+            "VYBER",
+            7000,
+            74078,
+            NaN
+          ],
+          [
+            816332,
+            2779,
+            "1998-02-19",
+            "VYDAJ",
+            "VYBER",
+            6400,
+            72409,
+            NaN
+          ],
+          [
+            816333,
+            2779,
+            "1998-03-21",
+            "VYDAJ",
+            "VYBER",
+            6800,
+            74885,
+            NaN
+          ],
+          [
+            816334,
+            2779,
+            "1998-04-20",
+            "VYDAJ",
+            "VYBER",
+            10900,
+            71072,
+            NaN
+          ],
+          [
+            816335,
+            2779,
+            "1998-05-20",
+            "VYDAJ",
+            "VYBER",
+            7200,
+            72356,
+            NaN
+          ],
+          [
+            816336,
+            2779,
+            "1998-06-19",
+            "VYDAJ",
+            "VYBER",
+            14400,
+            75889,
+            NaN
+          ],
+          [
+            816337,
+            2779,
+            "1998-07-19",
+            "VYDAJ",
+            "VYBER",
+            12100,
+            73087,
+            NaN
+          ],
+          [
+            816338,
+            2779,
+            "1998-08-18",
+            "VYDAJ",
+            "VYBER",
+            9200,
+            73179,
+            NaN
+          ],
+          [
+            816339,
+            2779,
+            "1998-09-17",
+            "VYDAJ",
+            "VYBER KARTOU",
+            3300,
+            79163,
+            NaN
+          ],
+          [
+            816340,
+            2779,
+            "1998-10-17",
+            "VYDAJ",
+            "VYBER",
+            7100,
+            81357,
+            NaN
+          ],
+          [
+            816341,
+            2779,
+            "1998-11-16",
+            "VYDAJ",
+            "VYBER",
+            10700,
+            79968,
+            NaN
+          ],
+          [
+            816342,
+            2779,
+            "1998-12-16",
+            "VYDAJ",
+            "VYBER",
+            16400,
+            81534,
+            NaN
+          ]
+        ]
+      },
+      "gold_data": {
+        "columns": [
+          "trans_id"
+        ],
+        "rows": [
+          [
+            816173
+          ],
+          [
+            816174
+          ],
+          [
+            816175
+          ],
+          [
+            816181
+          ],
+          [
+            816185
+          ],
+          [
+            816186
+          ],
+          [
+            816187
+          ],
+          [
+            816188
+          ],
+          [
+            816189
+          ],
+          [
+            816190
+          ],
+          [
+            816191
+          ],
+          [
+            816192
+          ],
+          [
+            816193
+          ],
+          [
+            816194
+          ],
+          [
+            816195
+          ],
+          [
+            816196
+          ],
+          [
+            816203
+          ],
+          [
+            816216
+          ],
+          [
+            816217
+          ],
+          [
+            816218
+          ],
+          [
+            816219
+          ],
+          [
+            816220
+          ],
+          [
+            816221
+          ],
+          [
+            816222
+          ],
+          [
+            816223
+          ],
+          [
+            816224
+          ],
+          [
+            816225
+          ],
+          [
+            816226
+          ],
+          [
+            816227
+          ],
+          [
+            816228
+          ],
+          [
+            816229
+          ],
+          [
+            816230
+          ],
+          [
+            816231
+          ],
+          [
+            816232
+          ],
+          [
+            816233
+          ],
+          [
+            816234
+          ],
+          [
+            816235
+          ],
+          [
+            816236
+          ],
+          [
+            816237
+          ],
+          [
+            816238
+          ],
+          [
+            816239
+          ],
+          [
+            816240
+          ],
+          [
+            816241
+          ],
+          [
+            816242
+          ],
+          [
+            816243
+          ],
+          [
+            816244
+          ],
+          [
+            816245
+          ],
+          [
+            816246
+          ],
+          [
+            816247
+          ],
+          [
+            816248
+          ],
+          [
+            816249
+          ],
+          [
+            816250
+          ],
+          [
+            816251
+          ],
+          [
+            816252
+          ],
+          [
+            816253
+          ],
+          [
+            816254
+          ],
+          [
+            816255
+          ],
+          [
+            816256
+          ],
+          [
+            816257
+          ],
+          [
+            816258
+          ],
+          [
+            816259
+          ],
+          [
+            816260
+          ],
+          [
+            816261
+          ],
+          [
+            816262
+          ],
+          [
+            816263
+          ],
+          [
+            816264
+          ],
+          [
+            816265
+          ],
+          [
+            816266
+          ],
+          [
+            816267
+          ],
+          [
+            816268
+          ],
+          [
+            816269
+          ],
+          [
+            816270
+          ],
+          [
+            816271
+          ],
+          [
+            816272
+          ],
+          [
+            816273
+          ],
+          [
+            816274
+          ],
+          [
+            816275
+          ],
+          [
+            816276
+          ],
+          [
+            816278
+          ],
+          [
+            816279
+          ],
+          [
+            816280
+          ],
+          [
+            816281
+          ],
+          [
+            816282
+          ],
+          [
+            816283
+          ],
+          [
+            816284
+          ],
+          [
+            816285
+          ],
+          [
+            816286
+          ],
+          [
+            816288
+          ],
+          [
+            816289
+          ],
+          [
+            816290
+          ],
+          [
+            816291
+          ],
+          [
+            816292
+          ],
+          [
+            816293
+          ],
+          [
+            816294
+          ],
+          [
+            816295
+          ],
+          [
+            816296
+          ],
+          [
+            816297
+          ],
+          [
+            816298
+          ],
+          [
+            816299
+          ],
+          [
+            816300
+          ],
+          [
+            816301
+          ],
+          [
+            816302
+          ],
+          [
+            816303
+          ],
+          [
+            816304
+          ],
+          [
+            816305
+          ],
+          [
+            816306
+          ],
+          [
+            816307
+          ],
+          [
+            816308
+          ],
+          [
+            816309
+          ],
+          [
+            816310
+          ],
+          [
+            816311
+          ],
+          [
+            816312
+          ],
+          [
+            816313
+          ],
+          [
+            816314
+          ],
+          [
+            816315
+          ],
+          [
+            816316
+          ],
+          [
+            816317
+          ],
+          [
+            816318
+          ],
+          [
+            816319
+          ],
+          [
+            816320
+          ],
+          [
+            816321
+          ],
+          [
+            816322
+          ],
+          [
+            816324
+          ],
+          [
+            816325
+          ],
+          [
+            816326
+          ],
+          [
+            816327
+          ],
+          [
+            816328
+          ],
+          [
+            816329
+          ],
+          [
+            816330
+          ],
+          [
+            816331
+          ],
+          [
+            816332
+          ],
+          [
+            816333
+          ],
+          [
+            816334
+          ],
+          [
+            816335
+          ],
+          [
+            816336
+          ],
+          [
+            816337
+          ],
+          [
+            816338
+          ],
+          [
+            816340
+          ],
+          [
+            816341
+          ],
+          [
+            816342
+          ]
+        ]
+      }
+    },
+    "accuracy": 0.0
+  },
+  "task_396": {
+    "correct": false,
+    "error_type": "missing_prediction",
+    "error_detail": "prediction.csv not found",
+    "accuracy": 0.0
+  },
+  "task_408": {
+    "correct": false,
+    "error_type": "missing_or_mismatched_gold_column",
+    "error_detail": {
+      "gold_column_index": 0,
+      "pred_columns": [
+        "percentage_faster"
+      ],
+      "gold_columns": [
+        "(cast((select time_seconds from last_driver_incremental) as real) * 100) / (select time_seconds + (select time_seconds from last_driver_incremental) from champion_time)"
+      ],
+      "pred_data": {
+        "columns": [
+          "percentage_faster"
+        ],
+        "rows": [
+          [
+            0.52
+          ]
+        ]
+      },
+      "gold_data": {
+        "columns": [
+          "(cast((select time_seconds from last_driver_incremental) as real) * 100) / (select time_seconds + (select time_seconds from last_driver_incremental) from champion_time)"
+        ],
+        "rows": [
+          [
+            0.3155573228603009
+          ]
+        ]
+      }
+    },
+    "accuracy": 0.0
+  },
+  "task_415": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_418": {
+    "correct": false,
+    "error_type": "missing_prediction",
+    "error_detail": "prediction.csv not found",
+    "accuracy": 0.0
+  },
+  "task_420": {
+    "correct": false,
+    "error_type": "missing_prediction",
+    "error_detail": "prediction.csv not found",
+    "accuracy": 0.0
+  },
+  "task_64": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_67": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_74": {
+    "correct": true,
+    "error_type": null,
+    "error_detail": null,
+    "accuracy": 1.0
+  },
+  "task_75": {
+    "correct": false,
+    "error_type": "missing_or_mismatched_gold_column",
+    "error_detail": {
+      "gold_column_index": 0,
+      "pred_columns": [
+        "surname"
+      ],
+      "gold_columns": [
+        "surname"
+      ],
+      "pred_data": {
+        "columns": [
+          "surname"
+        ],
+        "rows": [
+          [
+            "Trulli"
+          ]
+        ]
+      },
+      "gold_data": {
+        "columns": [
+          "surname"
+        ],
+        "rows": [
+          [
+            "Räikkönen"
+          ]
+        ]
+      }
+    },
+    "accuracy": 0.0
+  },
+  "task_80": {
+    "correct": false,
+    "error_type": "missing_prediction",
+    "error_detail": "prediction.csv not found",
+    "accuracy": 0.0
+  },
+  "task_86": {
+    "correct": false,
+    "error_type": "missing_or_mismatched_gold_column",
+    "error_detail": {
+      "gold_column_index": 0,
+      "pred_columns": [
+        "name"
+      ],
+      "gold_columns": [
+        "name"
+      ],
+      "pred_data": {
+        "columns": [
+          "name"
+        ],
+        "rows": [
+          [
+            "Australian Grand Prix"
+          ],
+          [
+            "Malaysian Grand Prix"
+          ],
+          [
+            "Brazilian Grand Prix"
+          ],
+          [
+            "San Marino Grand Prix"
+          ],
+          [
+            "Spanish Grand Prix"
+          ],
+          [
+            "Austrian Grand Prix"
+          ],
+          [
+            "Monaco Grand Prix"
+          ],
+          [
+            "Canadian Grand Prix"
+          ],
+          [
+            "European Grand Prix"
+          ],
+          [
+            "British Grand Prix"
+          ],
+          [
+            "French Grand Prix"
+          ],
+          [
+            "German Grand Prix"
+          ],
+          [
+            "Hungarian Grand Prix"
+          ],
+          [
+            "Belgian Grand Prix"
+          ],
+          [
+            "Italian Grand Prix"
+          ],
+          [
+            "United States Grand Prix"
+          ],
+          [
+            "Japanese Grand Prix"
+          ]
+        ]
+      },
+      "gold_data": {
+        "columns": [
+          "name"
+        ],
+        "rows": [
+          [
+            "Australian Grand Prix"
+          ],
+          [
+            "Malaysian Grand Prix"
+          ],
+          [
+            "Brazilian Grand Prix"
+          ],
+          [
+            "San Marino Grand Prix"
+          ],
+          [
+            "Spanish Grand Prix"
+          ],
+          [
+            "Austrian Grand Prix"
+          ],
+          [
+            "Monaco Grand Prix"
+          ],
+          [
+            "Canadian Grand Prix"
+          ],
+          [
+            "European Grand Prix"
+          ],
+          [
+            "British Grand Prix"
+          ],
+          [
+            "French Grand Prix"
+          ],
+          [
+            "German Grand Prix"
+          ],
+          [
+            "Hungarian Grand Prix"
+          ],
+          [
+            "Belgian Grand Prix"
+          ],
+          [
+            "Italian Grand Prix"
+          ],
+          [
+            "United States Grand Prix"
+          ]
+        ]
+      }
+    },
+    "accuracy": 0.0
+  },
+  "task_89": {
+    "correct": false,
+    "error_type": "missing_or_mismatched_gold_column",
+    "error_detail": {
+      "gold_column_index": 0,
+      "pred_columns": [
+        "time"
+      ],
+      "gold_columns": [
+        "time"
+      ],
+      "pred_data": {
+        "columns": [
+          "time"
+        ],
+        "rows": [
+          [
+            14.925
+          ]
+        ]
+      },
+      "gold_data": {
+        "columns": [
+          "time"
+        ],
+        "rows": [
+          [
+            16.445
+          ]
+        ]
+      }
+    },
+    "accuracy": 0.0
+  }
+}
