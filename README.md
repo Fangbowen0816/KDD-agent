@@ -1,58 +1,149 @@
-<div align="center">
+# DataAgent-Bench Agent 项目（自定义版本）
 
-# DataAgent-Bench Starter Kit
+本项目是一个基于 ReAct 范式的 **数据分析 Agent 框架实现**，用于在结构化数据（CSV / JSON / SQL / 文本）上进行多步推理与自动化分析。
 
-English | [中文](README.zh.md)
+---
 
-[![Official Website](https://img.shields.io/badge/Official%20Website-Visit%20dataagent.top-0ea5e9?style=for-the-badge&logo=googlechrome&logoColor=white&labelColor=0f172a)](https://dataagent.top)
-[![Demo Dataset](https://img.shields.io/badge/Demo%20Dataset-Download%20Phase%201-f59e0b?style=for-the-badge&logo=googledrive&logoColor=white&labelColor=0f172a)](https://drive.google.com/file/d/1lICQVM_LfyQ5DMEIZjssq6aaOPTWCtNd/view?usp=share_link)
-[![Discord](https://img.shields.io/badge/Discord-Join%20Community-5865F2?style=for-the-badge&logo=discord&logoColor=white&labelColor=0f172a)](https://discord.com/invite/7eFwJQN3Fx)
+# 1. 项目结构
 
-</div>
+```text
+kdd-agent/
+├── data/                     # 数据目录（不提交大规模数据）
+│   └── public/input/        # 测试任务输入
+│
+├── configs/                 # 配置文件
+│   └── react_baseline.yaml
+│
+├── src/
+│   ├── agent/               # ReAct agent 核心逻辑
+│   ├── tools/               # 工具系统（CSV/SQL/Python等）
+│   ├── runtime/             # 运行调度（runner）
+│   ├── prompt/              # prompt 设计
+│   └── utils/
+│
+├── artifacts/               # 运行结果输出
+│   └── runs/
+│
+├── run.py                  # 主入口（可选）
+├── requirements.txt
+└── README.md
+````
 
-> Official starter kit for the KDD Cup 2026 DataAgent-Bench challenge. The repository reads tasks from `data/public/input/` and writes predictions for downstream evaluation.
+---
 
-## Overview
+# 2. 环境搭建
 
-| Item | Value |
-| --- | --- |
-| Dataset input | `data/public/input/` |
-| Public demo ground truth | `data/public/output/task_<id>/gold.csv` |
-| Hidden test data | `input/` only, no `output/` |
-| Entry command | `uv run dabench <command> --config PATH` |
-| Default run output | `artifacts/runs/` |
+## 2.1 安装 Python 环境
 
-## Quick Start
+建议 Python >= 3.10
 
-1. Install `uv` by following the official guide:
-   - https://docs.astral.sh/uv/getting-started/installation/
-2. On macOS and Linux, the standalone installer is:
+```bash
+python -V
+```
 
-   ```bash
-   curl -LsSf https://astral.sh/uv/install.sh | sh
-   ```
+---
 
-3. Install project dependencies:
+## 2.2 安装依赖（推荐 uv）
 
-   ```bash
-   uv sync
-   ```
+```bash
+pip install uv
+uv sync
+```
 
-4. Confirm the dataset root is visible:
+或传统方式：
 
-   ```bash
-   uv run dabench status --config configs/react_baseline.example.yaml
-   ```
+```bash
+pip install -r requirements.txt
+```
 
-5. Run the baseline:
+---
 
-   ```bash
-   uv run dabench run-benchmark --config configs/react_baseline.example.yaml
-   ```
+## 2.3 配置 API（如 OpenAI-compatible / DeepSeek）
 
-## Dataset
+在 `configs/react_baseline.yaml` 中填写：
 
-The public demo dataset lives under `data/public/input/`. Each task directory follows this structure:
+```yaml
+agent:
+  model: your-model-name
+  api_base: your-api-base
+  api_key: your-api-key
+  max_steps: 16
+  temperature: 0.0
+```
+
+---
+
+# 3. CLI 使用方式
+
+统一入口：
+
+```bash
+uv run dabench <command> --config <config_path>
+```
+
+---
+
+## 3.1 查看环境状态
+
+```bash
+uv run dabench status --config configs/react_baseline.yaml
+```
+
+功能：
+
+* 检查数据路径
+* 检查配置是否正确
+* 输出任务数量
+
+---
+
+## 3.2 运行单个任务
+
+```bash
+uv run dabench run-task task_1 --config configs/react_baseline.yaml
+```
+
+输出：
+
+```text
+artifacts/runs/<run_id>/task_1/
+├── trace.json
+└── prediction.csv
+```
+
+---
+
+## 3.3 运行完整 benchmark
+
+```bash
+uv run dabench run-benchmark --config configs/react_baseline.yaml
+```
+
+可选参数：
+
+```bash
+--limit 10   # 只跑前10个任务（调试用）
+```
+
+---
+
+## 3.4 查看任务信息
+
+```bash
+uv run dabench inspect-task task_1 --config configs/react_baseline.yaml
+```
+
+功能：
+
+* 查看 question
+* 查看 context 文件结构
+* 检查数据类型
+
+---
+
+# 4. 数据格式说明
+
+## 4.1 输入结构
 
 ```text
 data/public/input/task_<id>/
@@ -60,166 +151,128 @@ data/public/input/task_<id>/
 └── context/
 ```
 
-The corresponding public demo answers live separately under `data/public/output/task_<id>/gold.csv`.
-Hidden test sets only include `input/`, so there is no `output/` directory there.
+---
 
-`task.json` contains:
+## 4.2 task.json 示例
 
-- `task_id`
-- `difficulty`
-- `question`
-
-The `context/` directory may contain one or more of:
-
-- CSV files
-- JSON files
-- SQLite / DB files
-- Text documents
-
-## Configuration
-
-An example config file lives at `configs/react_baseline.example.yaml`.
-
-```yaml
-dataset:
-  root_path: data/public/input
-
-agent:
-  model: YOUR_MODEL_NAME
-  api_base: YOUR_API_BASE_URL
-  api_key: YOUR_API_KEY
-  max_steps: 16
-  temperature: 0.0
-
-run:
-  output_dir: artifacts/runs
-  run_id:
-  max_workers: 4
-  task_timeout_seconds: 600
+```json
+{
+  "task_id": "task_1",
+  "difficulty": "medium",
+  "question": "计算某指标的统计结果"
+}
 ```
 
-Config fields:
+---
 
-| Field | Meaning |
-| --- | --- |
-| `dataset.root_path` | Root directory of the public demo `input/` dataset. Relative paths are resolved from the project root. |
-| `agent.model` | Model name. |
-| `agent.api_base` | OpenAI-compatible API base URL. |
-| `agent.api_key` | API key, read directly from the config file. |
-| `agent.max_steps` | Maximum ReAct steps per task. |
-| `agent.temperature` | Sampling temperature. |
-| `run.output_dir` | Output directory for run artifacts. |
-| `run.run_id` | Optional run directory name. Defaults to a UTC timestamp if omitted. Must be a single directory name; existing run directories are rejected. |
-| `run.max_workers` | Parallel worker count for `run-benchmark`. |
-| `run.task_timeout_seconds` | Maximum wall-clock time per task. Set to `0` or a negative value to disable the task-level timeout. |
+## 4.3 context 数据类型
 
-## CLI
+* CSV（表格数据）
+* JSON（结构化数据）
+* SQLite（数据库）
+* TXT（文本）
 
-```bash
-uv run dabench <command> --config PATH [options]
-```
+---
 
-| Command | Purpose | Example |
-| --- | --- | --- |
-| `status` | Show project paths, config path, dataset root, and public task counts. | `uv run dabench status --config configs/react_baseline.example.yaml` |
-| `inspect-task` | Show task metadata and list accessible files under `context/`. | `uv run dabench inspect-task task_1 --config configs/react_baseline.local.yaml` |
-| `run-task` | Run the baseline on one task and write outputs. | `uv run dabench run-task task_1 --config configs/react_baseline.local.yaml` |
-| `run-benchmark` | Run the baseline across the public dataset. | `uv run dabench run-benchmark --config configs/react_baseline.local.yaml` |
+# 5. 输出结构
 
-`run-benchmark` also supports `--limit N` to cap the number of tasks.
-
-## Tools
-
-The baseline exposes these tools to the model:
-
-| Tool | Purpose | Inputs |
-| --- | --- | --- |
-| `list_context` | List files and directories under `context/`. | `max_depth` |
-| `read_csv` | Read a CSV preview. | `path`, `max_rows` |
-| `read_json` | Read a JSON preview. | `path`, `max_chars` |
-| `read_doc` | Read a text document preview. | `path`, `max_chars` |
-| `inspect_sqlite_schema` | Inspect tables in a SQLite / DB file. | `path` |
-| `execute_context_sql` | Execute read-only SQL against a SQLite / DB file in `context/`. | `path`, `sql`, `limit` |
-| `execute_python` | Execute arbitrary Python code inside the task `context/` directory. | `code` |
-| `answer` | Submit the final answer table and terminate the task. | `columns`, `rows` |
-
-All file paths passed to tools must be relative to the task `context/` directory.
-
-## Outputs
-
-Each successful task run may produce:
-
-- `trace.json`
-- `prediction.csv`
-
-Per-task outputs are written to:
+## 单任务输出
 
 ```text
 artifacts/runs/<run_id>/<task_id>/
-├── trace.json
-└── prediction.csv
+├── trace.json       # agent 推理轨迹
+└── prediction.csv   # 最终答案
 ```
 
-Benchmark runs also write:
+---
+
+## 全局输出
 
 ```text
 artifacts/runs/<run_id>/summary.json
 ```
 
-## Contact
+包含：
 
-- Open issues: https://github.com/HKUSTDial/kddcup2026-data-agents-starter-kit/issues
-- Official website: https://dataagent.top
-- Discord: https://discord.com/invite/7eFwJQN3Fx
-- WeChat official account: `数据智能与分析实验室 DIAL`
+* 总任务数
+* 成功率
+* 评分统计
 
-<div align="center">
-  <table>
-    <tr>
-      <td align="center">
-        <a href="https://dataagent.top">
-          <img
-            src="https://api.qrserver.com/v1/create-qr-code/?size=144x144&data=https://dataagent.top&bgcolor=ffffff&color=111827&margin=8"
-            alt="Official website QR code"
-            width="144"
-          />
-        </a>
-        <br />
-        Official Website
-      </td>
-      <td align="center">
-        <a href="https://discord.com/invite/7eFwJQN3Fx">
-          <img
-            src="https://api.qrserver.com/v1/create-qr-code/?size=144x144&data=https://discord.com/invite/7eFwJQN3Fx&bgcolor=ffffff&color=111827&margin=8"
-            alt="Discord QR code"
-            width="144"
-          />
-        </a>
-        <br />
-        Discord
-      </td>
-      <td align="center">
-        <img
-          src="https://dataagent.top/HKUSTGZ_DIAL.jpg"
-          alt="WeChat official account QR code"
-          width="144"
-        />
-        <br />
-        WeChat Official Account
-      </td>
-    </tr>
-  </table>
-</div>
+---
 
-## Main Modules
+# 6. Agent 工具系统
 
-| Module | Responsibility |
-| --- | --- |
-| `src/data_agent_baseline/benchmark/dataset.py` | Public dataset loader |
-| `src/data_agent_baseline/tools/filesystem.py` | `list_context`, `read_csv`, `read_json`, `read_doc` |
-| `src/data_agent_baseline/tools/python_exec.py` | `execute_python` |
-| `src/data_agent_baseline/tools/sqlite.py` | `inspect_sqlite_schema`, `execute_context_sql` |
-| `src/data_agent_baseline/tools/registry.py` | Tool registration and terminal `answer` |
-| `src/data_agent_baseline/agents/prompt.py` | System prompt, task prompt, observation prompt |
-| `src/data_agent_baseline/agents/react.py` | ReAct runtime with JSON action protocol |
-| `src/data_agent_baseline/run/runner.py` | Single-task and benchmark execution |
+Agent 通过工具访问数据：
+
+| 工具             | 功能        |
+| -------------- | --------- |
+| list_context   | 查看文件结构    |
+| read_csv       | 读取表格      |
+| read_json      | 读取 JSON   |
+| read_doc       | 读取文本      |
+| execute_python | 执行 Python |
+| execute_sql    | 查询 SQLite |
+| answer         | 提交最终答案    |
+
+---
+
+# 7. 核心设计思想
+
+本项目基于：
+
+* ReAct（Reasoning + Acting）
+* Tool-augmented LLM
+* 多步数据分析 agent
+* 可复现 benchmark pipeline
+
+---
+
+# 8. 注意事项
+
+* ❌ 不要提交 data/ 原始数据
+* ❌ 不要泄露 API Key
+* ✔ 推荐使用 feature branch 开发
+* ✔ 所有实验结果保存在 artifacts/
+
+---
+
+# 9. 常见问题
+
+## Q1：运行失败找不到数据？
+
+检查：
+
+```bash
+uv run dabench status
+```
+
+---
+
+## Q2：API 报错？
+
+检查 config：
+
+* api_base 是否正确
+* api_key 是否有效
+
+---
+
+## Q3：结果为空？
+
+可能原因：
+
+* max_steps 太小
+* prompt 不稳定
+* tool 调用失败
+
+---
+
+# 10. 项目定位
+
+本项目用于：
+
+* KDD 类数据智能任务
+* LLM agent 系统实验
+* 多工具数据推理 benchmark
+
+---
