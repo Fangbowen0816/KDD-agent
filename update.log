@@ -1,0 +1,77 @@
+[update-2026-05-11]
+1. 本次实现的功能
+
+本次代码实现了一个多数据源统一查询引擎 DataEngine，支持：
+- CSV 文件加载
+- JSON 文件加载
+- SQLite 数据库加载（支持多表）
+- 将所有数据源统一转换为 DuckDB view
+- 提供统一 SQL 查询接口
+- 支持 SQL 自动重写与表名映射
+
+2. 数据注册功能（register）
+系统支持注册三种数据源：
+CSV,JSON,SQLite
+
+注册流程：
+
+- 解析文件路径
+- 生成 semantic 表名（基于文件名）
+- 生成 namespace（用于区分数据来源）
+- 创建 DuckDB view
+- 自动写入 catalog
+
+3. catalog 结构
+
+系统维护一个 catalog，用于管理表信息：
+key：semantic 表名（统一小写）
+value 包含：
+    internal_name（DuckDB view 名）
+    columns（字段列表）
+    source_type（数据来源类型）
+    file_path（原始文件路径）
+catalog 的作用是连接“用户看到的表名”和“实际执行的 view”。
+
+4. SQL 重写功能（rewrite_sql）
+
+系统支持自动 SQL 重写：
+处理流程：
+- 使用 sqlglot 解析 SQL
+- 识别 SQL 中的表名
+- 将 semantic 表名替换为 DuckDB view 名
+- 过滤 CTE 和子查询中的局部表
+- 输出 DuckDB 可执行 SQL
+
+5. 查询功能（query）
+执行流程：
+- 接收 SQL
+- 自动调用 rewrite_sql
+- 在 DuckDB 中执行
+- 返回结果（columns + rows）
+- 结果限制最多返回 1000 行
+
+6. SQLite 多表处理
+对于 SQLite 文件：
+    自动 attach 数据库,获取所有表,每个表生成一个独立 view,每个 view 写入 catalog
+view 命名格式：
+    {semantic}_{table}__{namespace}
+
+7. 表展示功能（show_tables）
+- 返回当前系统中所有已注册的 semantic 表：
+- 只返回语义表名,不暴露内部 view 名称
+
+8. 系统结构说明
+整个系统分为三层：
+
+语义层（semantic layer）:给 LLM 使用的表名（如 users、orders）
+
+catalog 层:管理 semantic 和实际 view 的映射关系,存储字段信息和来源信息
+
+存储层（storage layer）:DuckDB view 和 SQLite 表
+
+9. 本次改动的整体作用
+本次更新实现了：
+多数据源统一管理
+SQL 自动映射执行
+语义层与物理存储解耦
+为后续 LLM SQL 交互提供基础能力
