@@ -1,0 +1,15 @@
+dataset:
+  root_path: data/public/input
+
+agent:
+  model: "deepseek-coder"       
+  api_base: "https://api.deepseek.com" 
+  api_key: "sk-24e2dd233bd64f84be594fbfb3d8bc97" 
+  max_steps: 24
+  temperature: 0.0
+
+run:
+  output_dir: artifacts/runs
+  run_id:
+  max_workers: 4
+  task_timeout_seconds: 600
