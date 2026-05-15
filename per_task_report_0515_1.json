@@ -1,0 +1,3848 @@
+{
+  "match": {
+    "count": 12,
+    "tasks": [
+      "task_11",
+      "task_173",
+      "task_19",
+      "task_24",
+      "task_26",
+      "task_27",
+      "task_330",
+      "task_38",
+      "task_64",
+      "task_67",
+      "task_74",
+      "task_75"
+    ]
+  },
+  "mismatch": {
+    "count": 38,
+    "tasks": [
+      "task_145",
+      "task_163",
+      "task_169",
+      "task_180",
+      "task_194",
+      "task_196",
+      "task_199",
+      "task_200",
+      "task_214",
+      "task_218",
+      "task_22",
+      "task_243",
+      "task_249",
+      "task_25",
+      "task_250",
+      "task_257",
+      "task_259",
+      "task_261",
+      "task_269",
+      "task_283",
+      "task_287",
+      "task_292",
+      "task_303",
+      "task_305",
+      "task_344",
+      "task_349",
+      "task_350",
+      "task_352",
+      "task_355",
+      "task_379",
+      "task_396",
+      "task_408",
+      "task_415",
+      "task_418",
+      "task_420",
+      "task_80",
+      "task_86",
+      "task_89"
+    ],
+    "details": {
+      "task_145": {
+        "correct": false,
+        "error_type": "missing_or_mismatched_gold_column",
+        "error_detail": {
+          "gold_column_index": 0,
+          "pred_columns": [
+            "count"
+          ],
+          "gold_columns": [
+            "count(*)"
+          ],
+          "pred_data": {
+            "columns": [
+              "count"
+            ],
+            "rows": [
+              [
+                0
+              ]
+            ]
+          },
+          "gold_data": {
+            "columns": [
+              "count(*)"
+            ],
+            "rows": [
+              [
+                4
+              ]
+            ]
+          }
+        },
+        "accuracy": 0.0
+      },
+      "task_163": {
+        "correct": false,
+        "error_type": "missing_or_mismatched_gold_column",
+        "error_detail": {
+          "gold_column_index": 0,
+          "pred_columns": [
+            "budget.category",
+            "sum(expense.cost)"
+          ],
+          "gold_columns": [
+            "type",
+            "sum(t3.cost)"
+          ],
+          "pred_data": {
+            "columns": [
+              "budget.category",
+              "sum(expense.cost)"
+            ],
+            "rows": [
+              [
+                "Speaker Gifts",
+                43.18
+              ],
+              [
+                "Advertisement",
+                440.77
+              ],
+              [
+                "Food",
+                1234.73
+              ],
+              [
+                "Parking",
+                18.0
+              ],
+              [
+                "Club T-Shirts",
+                295.12
+              ]
+            ]
+          },
+          "gold_data": {
+            "columns": [
+              "type",
+              "sum(t3.cost)"
+            ],
+            "rows": [
+              [
+                "Meeting",
+                175.39
+              ]
+            ]
+          }
+        },
+        "accuracy": 0.0
+      },
+      "task_169": {
+        "correct": false,
+        "error_type": "missing_or_mismatched_gold_column",
+        "error_detail": {
+          "gold_column_index": 0,
+          "pred_columns": [
+            "avg_monthly"
+          ],
+          "gold_columns": [
+            "avg(t2.consumption) / 12"
+          ],
+          "pred_data": {
+            "columns": [
+              "avg_monthly"
+            ],
+            "rows": [
+              [
+                9067.081827299791
+              ]
+            ]
+          },
+          "gold_data": {
+            "columns": [
+              "avg(t2.consumption) / 12"
+            ],
+            "rows": [
+              [
+                459.9562642871061
+              ]
+            ]
+          }
+        },
+        "accuracy": 0.0
+      },
+      "task_180": {
+        "correct": false,
+        "error_type": "missing_or_mismatched_gold_column",
+        "error_detail": {
+          "gold_column_index": 0,
+          "pred_columns": [
+            "customerid",
+            "consumption"
+          ],
+          "gold_columns": [
+            "consumption"
+          ],
+          "pred_data": {
+            "columns": [
+              "customerid",
+              "consumption"
+            ],
+            "rows": [
+              [
+                7.0,
+                1826.46
+              ],
+              [
+                9.0,
+                55.34
+              ],
+              [
+                20.0,
+                1063.55
+              ],
+              [
+                35.0,
+                163.24
+              ],
+              [
+                37.0,
+                382.82
+              ],
+              [
+                38.0,
+                6194.45
+              ],
+              [
+                39.0,
+                170.76
+              ],
+              [
+                44.0,
+                198.2
+              ],
+              [
+                51.0,
+                913.32
+              ],
+              [
+                52.0,
+                1113.39
+              ],
+              [
+                63.0,
+                106.46
+              ],
+              [
+                77.0,
+                58.44
+              ],
+              [
+                96.0,
+                1541.51
+              ],
+              [
+                123.0,
+                26.82
+              ],
+              [
+                128.0,
+                73.27
+              ],
+              [
+                137.0,
+                123.23
+              ],
+              [
+                166.0,
+                272.28
+              ],
+              [
+                172.0,
+                206.23
+              ],
+              [
+                175.0,
+                413.69
+              ],
+              [
+                193.0,
+                512.57
+              ],
+              [
+                201.0,
+                128.42
+              ],
+              [
+                214.0,
+                91.4
+              ],
+              [
+                215.0,
+                105.1
+              ],
+              [
+                224.0,
+                206.88
+              ],
+              [
+                232.0,
+                16.0
+              ],
+              [
+                233.0,
+                69.65
+              ],
+              [
+                235.0,
+                371.06
+              ],
+              [
+                236.0,
+                84.14
+              ],
+              [
+                256.0,
+                214.73
+              ],
+              [
+                259.0,
+                241.75
+              ],
+              [
+                272.0,
+                1508.73
+              ],
+              [
+                274.0,
+                13.3
+              ],
+              [
+                285.0,
+                3208.53
+              ],
+              [
+                289.0,
+                259.8
+              ],
+              [
+                305.0,
+                512.85
+              ],
+              [
+                324.0,
+                889.15
+              ],
+              [
+                335.0,
+                1681.2
+              ],
+              [
+                339.0,
+                1141.19
+              ],
+              [
+                342.0,
+                27.01
+              ],
+              [
+                344.0,
+                2299.21
+              ],
+              [
+                345.0,
+                1250.61
+              ],
+              [
+                394.0,
+                5145.15
+              ],
+              [
+                420.0,
+                6440.65
+              ],
+              [
+                424.0,
+                27276.85
+              ],
+              [
+                427.0,
+                24925.76
+              ],
+              [
+                431.0,
+                24327.74
+              ],
+              [
+                465.0,
+                1477.34
+              ],
+              [
+                486.0,
+                1633.47
+              ],
+              [
+                496.0,
+                667.1
+              ],
+              [
+                504.0,
+                796.97
+              ],
+              [
+                505.0,
+                16466.82
+              ],
+              [
+                509.0,
+                11368.43
+              ],
+              [
+                519.0,
+                1743.59
+              ],
+              [
+                522.0,
+                557.21
+              ],
+              [
+                525.0,
+                2869.25
+              ],
+              [
+                531.0,
+                4457.41
+              ],
+              [
+                533.0,
+                887.74
+              ],
+              [
+                534.0,
+                1483.22
+              ],
+              [
+                536.0,
+                2055.11
+              ],
+              [
+                551.0,
+                21874.03
+              ],
+              [
+                560.0,
+                693.8
+              ],
+              [
+                579.0,
+                2598.15
+              ],
+              [
+                580.0,
+                1099.46
+              ],
+              [
+                583.0,
+                2137.64
+              ],
+              [
+                591.0,
+                138.96
+              ],
+              [
+                598.0,
+                14875.43
+              ],
+              [
+                600.0,
+                779.06
+              ],
+              [
+                603.0,
+                6107.71
+              ],
+              [
+                607.0,
+                992.55
+              ],
+              [
+                615.0,
+                43.02
+              ],
+              [
+                619.0,
+                1192.45
+              ],
+              [
+                623.0,
+                1114.51
+              ],
+              [
+                634.0,
+                5530.6
+              ],
+              [
+                639.0,
+                2709.76
+              ],
+              [
+                644.0,
+                27242.11
+              ],
+              [
+                645.0,
+                1327.54
+              ],
+              [
+                647.0,
+                60359.34
+              ],
+              [
+                649.0,
+                7729.44
+              ],
+              [
+                650.0,
+                1081.08
+              ],
+              [
+                651.0,
+                7749.3
+              ],
+              [
+                657.0,
+                1218.28
+              ],
+              [
+                658.0,
+                3361.97
+              ],
+              [
+                670.0,
+                2119.18
+              ],
+              [
+                671.0,
+                5091.45
+              ],
+              [
+                672.0,
+                1428.06
+              ],
+              [
+                677.0,
+                3671.73
+              ],
+              [
+                678.0,
+                2216.9
+              ],
+              [
+                679.0,
+                9783.86
+              ],
+              [
+                681.0,
+                192.58
+              ],
+              [
+                683.0,
+                509.84
+              ],
+              [
+                694.0,
+                868.43
+              ],
+              [
+                698.0,
+                110575.29
+              ],
+              [
+                700.0,
+                10068.29
+              ],
+              [
+                703.0,
+                2514.39
+              ],
+              [
+                704.0,
+                78.99
+              ],
+              [
+                711.0,
+                6326.29
+              ],
+              [
+                715.0,
+                99.02
+              ],
+              [
+                718.0,
+                2003.26
+              ],
+              [
+                721.0,
+                1184.65
+              ],
+              [
+                730.0,
+                1164.35
+              ],
+              [
+                732.0,
+                1406.45
+              ],
+              [
+                738.0,
+                209.72
+              ],
+              [
+                739.0,
+                613.08
+              ],
+              [
+                746.0,
+                609.41
+              ],
+              [
+                747.0,
+                541.97
+              ],
+              [
+                752.0,
+                4168.75
+              ],
+              [
+                761.0,
+                823.24
+              ],
+              [
+                764.0,
+                486.93
+              ],
+              [
+                773.0,
+                690.53
+              ],
+              [
+                776.0,
+                2040.91
+              ],
+              [
+                793.0,
+                2965.61
+              ],
+              [
+                802.0,
+                14023.59
+              ],
+              [
+                808.0,
+                344.94
+              ],
+              [
+                815.0,
+                9804.2
+              ],
+              [
+                818.0,
+                12153.05
+              ],
+              [
+                819.0,
+                449.51
+              ],
+              [
+                821.0,
+                794.82
+              ],
+              [
+                824.0,
+                737.57
+              ],
+              [
+                826.0,
+                2396.85
+              ],
+              [
+                829.0,
+                3748.24
+              ],
+              [
+                832.0,
+                1720.85
+              ],
+              [
+                836.0,
+                4327.26
+              ],
+              [
+                837.0,
+                1127.59
+              ],
+              [
+                840.0,
+                135.12
+              ],
+              [
+                842.0,
+                127263.18
+              ],
+              [
+                847.0,
+                1878.31
+              ],
+              [
+                858.0,
+                177.76
+              ],
+              [
+                867.0,
+                855.11
+              ],
+              [
+                873.0,
+                2559.21
+              ],
+              [
+                874.0,
+                30483.42
+              ],
+              [
+                875.0,
+                3020.11
+              ],
+              [
+                879.0,
+                13050.69
+              ],
+              [
+                884.0,
+                330.77
+              ],
+              [
+                885.0,
+                1183.21
+              ],
+              [
+                908.0,
+                1865.41
+              ],
+              [
+                909.0,
+                164.79
+              ],
+              [
+                910.0,
+                71.88
+              ],
+              [
+                914.0,
+                3083.61
+              ],
+              [
+                915.0,
+                664.12
+              ],
+              [
+                919.0,
+                3480.39
+              ],
+              [
+                922.0,
+                4904.19
+              ],
+              [
+                926.0,
+                427.89
+              ],
+              [
+                930.0,
+                1268.4
+              ],
+              [
+                940.0,
+                4215.35
+              ],
+              [
+                946.0,
+                1887.77
+              ],
+              [
+                952.0,
+                3252.78
+              ],
+              [
+                953.0,
+                301.08
+              ],
+              [
+                954.0,
+                255.26
+              ],
+              [
+                955.0,
+                5595.95
+              ],
+              [
+                956.0,
+                16521.89
+              ],
+              [
+                958.0,
+                131.92
+              ],
+              [
+                961.0,
+                10617.41
+              ],
+              [
+                966.0,
+                472.0
+              ],
+              [
+                969.0,
+                596.45
+              ],
+              [
+                974.0,
+                439.37
+              ],
+              [
+                977.0,
+                39226.26
+              ],
+              [
+                978.0,
+                1224.02
+              ],
+              [
+                997.0,
+                13825.44
+              ],
+              [
+                998.0,
+                160.97
+              ],
+              [
+                1006.0,
+                64805.06
+              ],
+              [
+                1011.0,
+                187.13
+              ],
+              [
+                1013.0,
+                5355.65
+              ],
+              [
+                1018.0,
+                3517.69
+              ],
+              [
+                1022.0,
+                6299.62
+              ],
+              [
+                1025.0,
+                64727.81
+              ],
+              [
+                1027.0,
+                99835.78
+              ],
+              [
+                1028.0,
+                966.23
+              ],
+              [
+                1037.0,
+                7080.2
+              ],
+              [
+                1043.0,
+                5113.3
+              ],
+              [
+                1044.0,
+                56248.61
+              ],
+              [
+                1051.0,
+                610.77
+              ],
+              [
+                1053.0,
+                740.18
+              ],
+              [
+                1055.0,
+                3476.13
+              ],
+              [
+                1057.0,
+                2482.88
+              ],
+              [
+                1061.0,
+                20223.67
+              ],
+              [
+                1070.0,
+                148.75
+              ],
+              [
+                1071.0,
+                24941.24
+              ],
+              [
+                1072.0,
+                47.67
+              ],
+              [
+                1076.0,
+                620.21
+              ],
+              [
+                1077.0,
+                5982.92
+              ],
+              [
+                1081.0,
+                4107.1
+              ],
+              [
+                1083.0,
+                2023.63
+              ],
+              [
+                1087.0,
+                177.29
+              ],
+              [
+                1089.0,
+                1629.37
+              ],
+              [
+                1103.0,
+                12921.42
+              ],
+              [
+                1108.0,
+                332.45
+              ],
+              [
+                1116.0,
+                439.29
+              ],
+              [
+                1117.0,
+                4407.82
+              ],
+              [
+                1118.0,
+                596.88
+              ],
+              [
+                1128.0,
+                5921.43
+              ],
+              [
+                1135.0,
+                899.1
+              ],
+              [
+                1140.0,
+                19600.64
+              ],
+              [
+                1143.0,
+                522.51
+              ],
+              [
+                1159.0,
+                1496.19
+              ],
+              [
+                1163.0,
+                1499.77
+              ],
+              [
+                1164.0,
+                2189.23
+              ],
+              [
+                1170.0,
+                218.28
+              ],
+              [
+                1174.0,
+                1428.77
+              ],
+              [
+                1195.0,
+                607.64
+              ],
+              [
+                1200.0,
+                68.5
+              ]
+            ]
+          },
+          "gold_data": {
+            "columns": [
+              "consumption"
+            ],
+            "rows": [
+              [
+                1903.2
+              ],
+              [
+                88265.39
+              ],
+              [
+                1129.2
+              ],
+              [
+                126157.7
+              ],
+              [
+                58.19
+              ],
+              [
+                1142.95
+              ],
+              [
+                8878.07
+              ],
+              [
+                69331.72
+              ],
+              [
+                45937.22
+              ]
+            ]
+          }
+        },
+        "accuracy": 0.0
+      },
+      "task_194": {
+        "correct": false,
+        "error_type": "missing_or_mismatched_gold_column",
+        "error_detail": {
+          "gold_column_index": 0,
+          "pred_columns": [
+            "bond_id"
+          ],
+          "gold_columns": [
+            "bond_id"
+          ],
+          "pred_data": {
+            "columns": [
+              "bond_id"
+            ],
+            "rows": []
+          },
+          "gold_data": {
+            "columns": [
+              "bond_id"
+            ],
+            "rows": [
+              [
+                "TR032_2_3"
+              ],
+              [
+                "TR032_3_5"
+              ],
+              [
+                "TR058_1_3"
+              ],
+              [
+                "TR058_1_4"
+              ],
+              [
+                "TR058_1_5"
+              ],
+              [
+                "TR298_1_5"
+              ]
+            ]
+          }
+        },
+        "accuracy": 0.0
+      },
+      "task_196": {
+        "correct": false,
+        "error_type": "missing_or_mismatched_gold_column",
+        "error_detail": {
+          "gold_column_index": 0,
+          "pred_columns": [
+            "message"
+          ],
+          "gold_columns": [
+            "cast(count(t2.bond_id) as real) / count(t1.atom_id)"
+          ],
+          "pred_data": {
+            "columns": [
+              "message"
+            ],
+            "rows": [
+              [
+                "Cannot be computed: the required atom table with element column is not present in the loaded schema."
+              ]
+            ]
+          },
+          "gold_data": {
+            "columns": [
+              "cast(count(t2.bond_id) as real) / count(t1.atom_id)"
+            ],
+            "rows": [
+              [
+                1.0
+              ]
+            ]
+          }
+        },
+        "accuracy": 0.0
+      },
+      "task_199": {
+        "correct": false,
+        "error_type": "missing_or_mismatched_gold_column",
+        "error_detail": {
+          "gold_column_index": 0,
+          "pred_columns": [
+            "frpm.school name",
+            "frpm.charter funding type"
+          ],
+          "gold_columns": [
+            "sname",
+            "charter funding type"
+          ],
+          "pred_data": {
+            "columns": [
+              "frpm.school name",
+              "frpm.charter funding type"
+            ],
+            "rows": [
+              [
+                "River Springs Charter",
+                "Directly funded"
+              ],
+              [
+                "Riverside County Education Academy",
+                "Locally funded"
+              ],
+              [
+                "Imagine Schools, Riverside County",
+                "Directly funded"
+              ],
+              [
+                "Come Back Kids",
+                "Locally funded"
+              ],
+              [
+                "Gateway College and Career Academy",
+                "Directly funded"
+              ],
+              [
+                "Riverside County Juvenile Court",
+                NaN
+              ],
+              [
+                "Riverside County Community",
+                NaN
+              ],
+              [
+                "Riverside County Special Education",
+                NaN
+              ],
+              [
+                "California School for the Deaf-Riverside",
+                NaN
+              ],
+              [
+                "Lake Mathews Elementary",
+                NaN
+              ],
+              [
+                "Mark Twain Elementary",
+                NaN
+              ],
+              [
+                "Patricia Beatty Elementary",
+                NaN
+              ],
+              [
+                "Riverside Virtual",
+                NaN
+              ],
+              [
+                "Frank Augustus Miller Middle",
+                NaN
+              ],
+              [
+                "REACH Leadership Academy",
+                "Directly funded"
+              ],
+              [
+                "Riverside STEM Academy",
+                NaN
+              ],
+              [
+                "Arlington High",
+                NaN
+              ],
+              [
+                "Summit View Independent Study",
+                NaN
+              ],
+              [
+                "Opportunity Program",
+                NaN
+              ],
+              [
+                "Raincross High (Continuation)",
+                NaN
+              ],
+              [
+                "Martin Luther King Jr. High",
+                NaN
+              ],
+              [
+                "John W. North High",
+                NaN
+              ],
+              [
+                "Polytechnic High",
+                NaN
+              ],
+              [
+                "Ramona High",
+                NaN
+              ],
+              [
+                "Abraham Lincoln Continuation",
+                NaN
+              ],
+              [
+                "Adams Elementary",
+                NaN
+              ],
+              [
+                "Alcott Elementary",
+                NaN
+              ],
+              [
+                "Bryant Elementary",
+                NaN
+              ],
+              [
+                "Castle View Elementary",
+                NaN
+              ],
+              [
+                "Emerson Elementary",
+                NaN
+              ],
+              [
+                "Fremont Elementary",
+                NaN
+              ],
+              [
+                "Harrison Elementary",
+                NaN
+              ],
+              [
+                "Hawthorne Elementary",
+                NaN
+              ],
+              [
+                "Highgrove Elementary",
+                NaN
+              ],
+              [
+                "Highland Elementary",
+                NaN
+              ],
+              [
+                "Jackson Elementary",
+                NaN
+              ],
+              [
+                "Jefferson Elementary",
+                NaN
+              ],
+              [
+                "Liberty Elementary",
+                NaN
+              ],
+              [
+                "Longfellow Elementary",
+                NaN
+              ],
+              [
+                "Madison Elementary",
+                NaN
+              ],
+              [
+                "Magnolia Elementary",
+                NaN
+              ],
+              [
+                "Monroe Elementary",
+                NaN
+              ],
+              [
+                "Mountain View Elementary",
+                NaN
+              ],
+              [
+                "Pachappa Elementary",
+                NaN
+              ],
+              [
+                "Sunshine Special Education",
+                NaN
+              ],
+              [
+                "Victoria Elementary",
+                NaN
+              ],
+              [
+                "Washington Elementary",
+                NaN
+              ],
+              [
+                "Central Middle",
+                NaN
+              ],
+              [
+                "Matthew Gage Middle",
+                NaN
+              ],
+              [
+                "Sierra Middle",
+                NaN
+              ],
+              [
+                "University Heights Middle",
+                NaN
+              ],
+              [
+                "Chemawa Middle",
+                NaN
+              ],
+              [
+                "Woodcrest Elementary",
+                NaN
+              ],
+              [
+                "William Howard Taft Elementary",
+                NaN
+              ],
+              [
+                "Benjamin Franklin Elementary",
+                NaN
+              ],
+              [
+                "Amelia Earhart Middle",
+                NaN
+              ],
+              [
+                "Tomas Rivera Elementary",
+                NaN
+              ],
+              [
+                "John F. Kennedy Elementary",
+                NaN
+              ]
+            ]
+          },
+          "gold_data": {
+            "columns": [
+              "sname",
+              "charter funding type"
+            ],
+            "rows": [
+              [
+                "Arlington High",
+                NaN
+              ],
+              [
+                "John W. North High",
+                NaN
+              ],
+              [
+                "Martin Luther King Jr. High",
+                NaN
+              ],
+              [
+                "Polytechnic High",
+                NaN
+              ],
+              [
+                "Ramona High",
+                NaN
+              ],
+              [
+                "River Springs Charter",
+                "Directly funded"
+              ]
+            ]
+          }
+        },
+        "accuracy": 0.0
+      },
+      "task_200": {
+        "correct": false,
+        "error_type": "missing_or_mismatched_gold_column",
+        "error_detail": {
+          "gold_column_index": 0,
+          "pred_columns": [
+            "total_atoms"
+          ],
+          "gold_columns": [
+            "count(t1.atom_id)"
+          ],
+          "pred_data": {
+            "columns": [
+              "total_atoms"
+            ],
+            "rows": [
+              [
+                1169
+              ]
+            ]
+          },
+          "gold_data": {
+            "columns": [
+              "count(t1.atom_id)"
+            ],
+            "rows": [
+              [
+                1
+              ]
+            ]
+          }
+        },
+        "accuracy": 0.0
+      },
+      "task_214": {
+        "correct": false,
+        "error_type": "missing_or_mismatched_gold_column",
+        "error_detail": {
+          "gold_column_index": 0,
+          "pred_columns": [
+            "count(distinct set_translations.setcode)"
+          ],
+          "gold_columns": [
+            "count(t1.id)"
+          ],
+          "pred_data": {
+            "columns": [
+              "count(distinct set_translations.setcode)"
+            ],
+            "rows": [
+              [
+                0
+              ]
+            ]
+          },
+          "gold_data": {
+            "columns": [
+              "count(t1.id)"
+            ],
+            "rows": [
+              [
+                7
+              ]
+            ]
+          }
+        },
+        "accuracy": 0.0
+      },
+      "task_218": {
+        "correct": false,
+        "error_type": "missing_prediction",
+        "error_detail": "prediction.csv not found",
+        "accuracy": 0.0
+      },
+      "task_22": {
+        "correct": false,
+        "error_type": "missing_or_mismatched_gold_column",
+        "error_detail": {
+          "gold_column_index": 0,
+          "pred_columns": [
+            "income.date_received"
+          ],
+          "gold_columns": [
+            "date_received"
+          ],
+          "pred_data": {
+            "columns": [
+              "income.date_received"
+            ],
+            "rows": [
+              [
+                "2019-10-02T00:00:00"
+              ],
+              [
+                "2019-09-12T00:00:00"
+              ]
+            ]
+          },
+          "gold_data": {
+            "columns": [
+              "date_received"
+            ],
+            "rows": [
+              [
+                "2019-10-02"
+              ],
+              [
+                "2019-09-12"
+              ]
+            ]
+          }
+        },
+        "accuracy": 0.0
+      },
+      "task_243": {
+        "correct": false,
+        "error_type": "missing_or_mismatched_gold_column",
+        "error_detail": {
+          "gold_column_index": 0,
+          "pred_columns": [
+            "userid"
+          ],
+          "gold_columns": [
+            "cast(count(distinct t2.id) as real) / count(distinct t1.id)"
+          ],
+          "pred_data": {
+            "columns": [
+              "userid"
+            ],
+            "rows": []
+          },
+          "gold_data": {
+            "columns": [
+              "cast(count(distinct t2.id) as real) / count(distinct t1.id)"
+            ],
+            "rows": [
+              [
+                0.375
+              ]
+            ]
+          }
+        },
+        "accuracy": 0.0
+      },
+      "task_249": {
+        "correct": false,
+        "error_type": "missing_prediction",
+        "error_detail": "prediction.csv not found",
+        "accuracy": 0.0
+      },
+      "task_25": {
+        "correct": false,
+        "error_type": "missing_or_mismatched_gold_column",
+        "error_detail": {
+          "gold_column_index": 0,
+          "pred_columns": [
+            "event.event_name"
+          ],
+          "gold_columns": [
+            "event_name"
+          ],
+          "pred_data": {
+            "columns": [
+              "event.event_name"
+            ],
+            "rows": [
+              [
+                "Officers meeting - October"
+              ]
+            ]
+          },
+          "gold_data": {
+            "columns": [
+              "event_name"
+            ],
+            "rows": [
+              [
+                "November Speaker"
+              ],
+              [
+                "October Speaker"
+              ],
+              [
+                "September Speaker"
+              ]
+            ]
+          }
+        },
+        "accuracy": 0.0
+      },
+      "task_250": {
+        "correct": false,
+        "error_type": "missing_or_mismatched_gold_column",
+        "error_detail": {
+          "gold_column_index": 0,
+          "pred_columns": [
+            "postid"
+          ],
+          "gold_columns": [
+            "postid"
+          ],
+          "pred_data": {
+            "columns": [
+              "postid"
+            ],
+            "rows": []
+          },
+          "gold_data": {
+            "columns": [
+              "postid"
+            ],
+            "rows": [
+              [
+                351
+              ]
+            ]
+          }
+        },
+        "accuracy": 0.0
+      },
+      "task_257": {
+        "correct": false,
+        "error_type": "missing_prediction",
+        "error_detail": "prediction.csv not found",
+        "accuracy": 0.0
+      },
+      "task_259": {
+        "correct": false,
+        "error_type": "missing_or_mismatched_gold_column",
+        "error_detail": {
+          "gold_column_index": 0,
+          "pred_columns": [
+            "commentid",
+            "score"
+          ],
+          "gold_columns": [
+            "text"
+          ],
+          "pred_data": {
+            "columns": [
+              "commentid",
+              "score"
+            ],
+            "rows": [
+              [
+                11575,
+                90
+              ]
+            ]
+          },
+          "gold_data": {
+            "columns": [
+              "text"
+            ],
+            "rows": [
+              [
+                "Welcome to Cross Validated David P, for more information about the site and how to ask questions, you can check out the [FAQ](http://stats.stackexchange.com/faq). Is your question just about whether the calculation is right or wrong (it is wrong, with the numbers you give on your second line the result of the operation is 0.187, rounded)? Otherwise, yes, a percentage can be as close to zero as you can imagine because it is bounded between 0 and 100 and continuous on that interval."
+              ]
+            ]
+          }
+        },
+        "accuracy": 0.0
+      },
+      "task_261": {
+        "correct": false,
+        "error_type": "missing_or_mismatched_gold_column",
+        "error_detail": {
+          "gold_column_index": 0,
+          "pred_columns": [
+            "count(*)"
+          ],
+          "gold_columns": [
+            "count(t1.id)"
+          ],
+          "pred_data": {
+            "columns": [
+              "count(*)"
+            ],
+            "rows": [
+              [
+                69
+              ]
+            ]
+          },
+          "gold_data": {
+            "columns": [
+              "count(t1.id)"
+            ],
+            "rows": [
+              [
+                56
+              ]
+            ]
+          }
+        },
+        "accuracy": 0.0
+      },
+      "task_269": {
+        "correct": false,
+        "error_type": "missing_or_mismatched_gold_column",
+        "error_detail": {
+          "gold_column_index": 0,
+          "pred_columns": [
+            "hero_power.hero_id"
+          ],
+          "gold_columns": [
+            "superhero_name"
+          ],
+          "pred_data": {
+            "columns": [
+              "hero_power.hero_id"
+            ],
+            "rows": [
+              [
+                105
+              ],
+              [
+                116
+              ],
+              [
+                331
+              ],
+              [
+                424
+              ],
+              [
+                518
+              ],
+              [
+                539
+              ],
+              [
+                637
+              ]
+            ]
+          },
+          "gold_data": {
+            "columns": [
+              "superhero_name"
+            ],
+            "rows": [
+              [
+                "Black Flash"
+              ],
+              [
+                "Blackwulf"
+              ],
+              [
+                "Hela"
+              ],
+              [
+                "Living Tribunal"
+              ],
+              [
+                "One-Above-All"
+              ],
+              [
+                "Poison Ivy"
+              ],
+              [
+                "Spectre"
+              ]
+            ]
+          }
+        },
+        "accuracy": 0.0
+      },
+      "task_283": {
+        "correct": false,
+        "error_type": "missing_or_mismatched_gold_column",
+        "error_detail": {
+          "gold_column_index": 0,
+          "pred_columns": [
+            "null"
+          ],
+          "gold_columns": [
+            "cast(count(case when t2.colour = 'blue' then 1 else null end) as real) * 100 / count(t1.id)"
+          ],
+          "pred_data": {
+            "columns": [
+              "null"
+            ],
+            "rows": []
+          },
+          "gold_data": {
+            "columns": [
+              "cast(count(case when t2.colour = 'blue' then 1 else null end) as real) * 100 / count(t1.id)"
+            ],
+            "rows": [
+              [
+                31.2
+              ]
+            ]
+          }
+        },
+        "accuracy": 0.0
+      },
+      "task_287": {
+        "correct": false,
+        "error_type": "missing_or_mismatched_gold_column",
+        "error_detail": {
+          "gold_column_index": 0,
+          "pred_columns": [
+            "hero_id"
+          ],
+          "gold_columns": [
+            "gender"
+          ],
+          "pred_data": {
+            "columns": [
+              "hero_id"
+            ],
+            "rows": [
+              [
+                534
+              ]
+            ]
+          },
+          "gold_data": {
+            "columns": [
+              "gender"
+            ],
+            "rows": [
+              [
+                "Female"
+              ]
+            ]
+          }
+        },
+        "accuracy": 0.0
+      },
+      "task_292": {
+        "correct": false,
+        "error_type": "missing_or_mismatched_gold_column",
+        "error_detail": {
+          "gold_column_index": 0,
+          "pred_columns": [
+            "constructors.url"
+          ],
+          "gold_columns": [
+            "url"
+          ],
+          "pred_data": {
+            "columns": [
+              "constructors.url"
+            ],
+            "rows": [
+              [
+                "http://en.wikipedia.org/wiki/McLaren"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/BMW_Sauber"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Williams_Grand_Prix_Engineering"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Renault_F1"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Scuderia_Toro_Rosso"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Scuderia_Ferrari"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Toyota_Racing"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Super_Aguri_F1"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Red_Bull_Racing"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Force_India"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Honda_Racing_F1"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Spyker_F1"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Midland_F1_Racing"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Midland_F1_Racing"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Sauber"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/British_American_Racing"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Jordan_Grand_Prix"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Minardi"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Jaguar_Racing"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Prost_Grand_Prix"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Arrows_Grand_Prix_International"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Benetton_Formula"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Brawn_GP"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Stewart_Grand_Prix"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Tyrrell_Racing"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/MasterCard_Lola"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Ligier"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Forti"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Footwork_Arrows"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Pacific_Racing"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Simtek"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Team_Lotus"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Larrousse"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Brabham"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Dallara"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Fondmetal"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/March_Engineering"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Andrea_Moda_Formula"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Automobiles_Gonfaronnaises_Sportives"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Modena_(racing_team)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Leyton_House"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Enzo_Coloni_Racing_Car_Systems"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Euro_Brun"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Osella"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Onyx_(racing_team)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Life_(Racing_Team)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Rial_%28racing_team%29"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Zakspeed"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/RAM_Racing"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Alfa_Romeo_(Formula_One)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Spirit_(racing_team)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Toleman"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/ATS_(wheels)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Theodore_Racing"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Fittipaldi_%28constructor%29"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Ensign_%28racing_team%29"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Shadow_Racing_Cars"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Walter_Wolf_Racing"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Merzario"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Kauhsen"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Rebaque"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Surtees"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Hesketh_Racing"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Martini_(cars)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/BRM"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Penske_Racing"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/LEC_(Formula_One)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/McGuire_(Formula_One)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Boro_(Formula_One)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Apollon_(Formula_One)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Kojima_Engineering"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Parnelli"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Maki_(cars)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Hill_(constructor)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Lyncar"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Trojan_(Racing_team)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Amon_(Formula_One_team)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Token_(Racing_team)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Iso_Marlboro"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Tecno"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Matra"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Frank_Williams_Racing_Cars"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Connew"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Bellasi"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/De_Tomaso"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Cooper_Car_Company"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Anglo_American_Racers"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/LDS_(automobile)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Protos_(constructor)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Shannon_(Formula_One)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Scirocco-Powell"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/RE_%28automobile%29"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/British_Racing_Partnership"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Porsche_in_Formula_One"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Derrington-Francis"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Gilby"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Stebro"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Emeryson"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Ecurie_Nationale_Belge"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/JBW"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Ferguson_Research_Ltd."
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Monteverdi_Basel_Motors"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Behra-Porsche"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Maserati"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Scarab_(constructor)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/A.J._Watson"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Epperly"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Phillips_(constructor)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Lesovsky"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Trevis"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Meskowski"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Kurtis_Kraft"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Kuzma_(constructor)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Christensen_(constructor)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Ewing_(constructor)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Aston_Martin"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Vanwall"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Moore_(constructor)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Dunn_Engineering"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Elder_(constructor)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Sutton_(constructor)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Fry_(racing_team)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Tec-Mec"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Connaught_Engineering"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Alta_auto_racing_team"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Officine_Specializate_Costruzione_Automobili"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Gordini"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Stevens_(constructor)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Bugatti"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Mercedes-Benz_in_Formula_One"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Lancia_in_Formula_One"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Hersham_and_Walton_Motors"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Schroeder_(constructor)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Pawl_(constructor)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Pankratz"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Arzani-Volpini"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Nichels"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Bromme"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Klenk"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Simca"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Turner_(constructor)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Del_Roy"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Veritas_(constructor)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/BMW"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Eisenacher_Motorenwerk"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Alex_von_Falkenhausen_Motorenbau"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Frazer_Nash"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Sherman_(constructor)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Deidt"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/English_Racing_Automobiles"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Aston_Butterworth"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Cisitalia"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Talbot-Lago"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Hall_(constructor)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Marchese_(constructor)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Langley_(constructor)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Rae_(motorsport)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Olson_(constructor)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Wetteroth"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Adams_(constructor)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Snowberger"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Scuderia_Milano"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Hispania_Racing"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Virgin_Racing"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Cooper_Car_Company"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Cooper_Car_Company"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Cooper_Car_Company"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Cooper_Car_Company"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Cooper_Car_Company"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Team_Lotus"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Team_Lotus"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/De_Tomaso"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/De_Tomaso"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Team_Lotus"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Team_Lotus"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Cooper_Car_Company"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/De_Tomaso"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Team_Lotus"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Brabham"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Brabham"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Brabham"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/LDS_(automobile)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/LDS_(automobile)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Cooper_Car_Company"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Team_McLaren"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Team_McLaren"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Anglo_American_Racers"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Anglo_American_Racers"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Brabham"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Cooper_Car_Company"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Cooper_Car_Company"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/McLaren_(racing)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Cooper_Car_Company"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Matra"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/BRM"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/McLaren_(racing)"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/March_Engineering"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/March_Engineering"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Team_Lotus"
+              ],
+              [
+                "http://en.wikipedia.org/wiki/Shadow_Racing_Cars"
+              ]
+            ]
+          },
+          "gold_data": {
+            "columns": [
+              "url"
+            ],
+            "rows": [
+              [
+                "http://en.wikipedia.org/wiki/Red_Bull_Racing"
+              ]
+            ]
+          }
+        },
+        "accuracy": 0.0
+      },
+      "task_303": {
+        "correct": false,
+        "error_type": "missing_or_mismatched_gold_column",
+        "error_detail": {
+          "gold_column_index": 0,
+          "pred_columns": [
+            "percentage"
+          ],
+          "gold_columns": [
+            "cast(count(case when t1.country = 'germany' then t2.circuitid end) as real) * 100 / count(t2.circuitid)"
+          ],
+          "pred_data": {
+            "columns": [
+              "percentage"
+            ],
+            "rows": [
+              [
+                8.333333333333334
+              ]
+            ]
+          },
+          "gold_data": {
+            "columns": [
+              "cast(count(case when t1.country = 'germany' then t2.circuitid end) as real) * 100 / count(t2.circuitid)"
+            ],
+            "rows": [
+              [
+                52.17391304347826
+              ]
+            ]
+          }
+        },
+        "accuracy": 0.0
+      },
+      "task_305": {
+        "correct": false,
+        "error_type": "missing_or_mismatched_gold_column",
+        "error_detail": {
+          "gold_column_index": 0,
+          "pred_columns": [
+            "max(fastestlapspeed)"
+          ],
+          "gold_columns": [
+            "fastestlapspeed"
+          ],
+          "pred_data": {
+            "columns": [
+              "max(fastestlapspeed)"
+            ],
+            "rows": [
+              [
+                257.32
+              ]
+            ]
+          },
+          "gold_data": {
+            "columns": [
+              "fastestlapspeed"
+            ],
+            "rows": [
+              [
+                202.484
+              ]
+            ]
+          }
+        },
+        "accuracy": 0.0
+      },
+      "task_344": {
+        "correct": false,
+        "error_type": "missing_or_mismatched_gold_column",
+        "error_detail": {
+          "gold_column_index": 0,
+          "pred_columns": [
+            "patient_count"
+          ],
+          "gold_columns": [
+            "count(distinct t1.id)"
+          ],
+          "pred_data": {
+            "columns": [
+              "patient_count"
+            ],
+            "rows": [
+              [
+                3
+              ]
+            ]
+          },
+          "gold_data": {
+            "columns": [
+              "count(distinct t1.id)"
+            ],
+            "rows": [
+              [
+                4
+              ]
+            ]
+          }
+        },
+        "accuracy": 0.0
+      },
+      "task_349": {
+        "correct": false,
+        "error_type": "missing_or_mismatched_gold_column",
+        "error_detail": {
+          "gold_column_index": 0,
+          "pred_columns": [
+            "link_to_major"
+          ],
+          "gold_columns": [
+            "major_name"
+          ],
+          "pred_data": {
+            "columns": [
+              "link_to_major"
+            ],
+            "rows": [
+              [
+                "recxK3MHQFbR9J5uO"
+              ]
+            ]
+          },
+          "gold_data": {
+            "columns": [
+              "major_name"
+            ],
+            "rows": [
+              [
+                "Business"
+              ]
+            ]
+          }
+        },
+        "accuracy": 0.0
+      },
+      "task_350": {
+        "correct": false,
+        "error_type": "missing_or_mismatched_gold_column",
+        "error_detail": {
+          "gold_column_index": 0,
+          "pred_columns": [
+            "count(*)"
+          ],
+          "gold_columns": [
+            "count(t1.event_id)"
+          ],
+          "pred_data": {
+            "columns": [
+              "count(*)"
+            ],
+            "rows": [
+              [
+                10
+              ]
+            ]
+          },
+          "gold_data": {
+            "columns": [
+              "count(t1.event_id)"
+            ],
+            "rows": [
+              [
+                7
+              ]
+            ]
+          }
+        },
+        "accuracy": 0.0
+      },
+      "task_352": {
+        "correct": false,
+        "error_type": "missing_or_mismatched_gold_column",
+        "error_detail": {
+          "gold_column_index": 0,
+          "pred_columns": [
+            "event_id",
+            "event_name"
+          ],
+          "gold_columns": [
+            "cast(sum(case when t2.event_name = 'yearly kickoff' then t1.amount else 0 end) as real) / sum(case when t2.event_name = 'october meeting' then t1.amount else 0 end)"
+          ],
+          "pred_data": {
+            "columns": [
+              "event_id",
+              "event_name"
+            ],
+            "rows": [
+              [
+                "recggMW2eyCYceNcy",
+                "October Meeting"
+              ],
+              [
+                "recykdvf4LgsyA3wZ",
+                "Yearly Kickoff"
+              ]
+            ]
+          },
+          "gold_data": {
+            "columns": [
+              "cast(sum(case when t2.event_name = 'yearly kickoff' then t1.amount else 0 end) as real) / sum(case when t2.event_name = 'october meeting' then t1.amount else 0 end)"
+            ],
+            "rows": [
+              [
+                2.727272727272727
+              ]
+            ]
+          }
+        },
+        "accuracy": 0.0
+      },
+      "task_355": {
+        "correct": false,
+        "error_type": "missing_or_mismatched_gold_column",
+        "error_detail": {
+          "gold_column_index": 0,
+          "pred_columns": [
+            "full_name",
+            "cost"
+          ],
+          "gold_columns": [
+            "first_name",
+            "last_name",
+            "cost"
+          ],
+          "pred_data": {
+            "columns": [
+              "full_name",
+              "cost"
+            ],
+            "rows": []
+          },
+          "gold_data": {
+            "columns": [
+              "first_name",
+              "last_name",
+              "cost"
+            ],
+            "rows": [
+              [
+                "Elijah",
+                "Allen",
+                28.15
+              ]
+            ]
+          }
+        },
+        "accuracy": 0.0
+      },
+      "task_379": {
+        "correct": false,
+        "error_type": "missing_or_mismatched_gold_column",
+        "error_detail": {
+          "gold_column_index": 0,
+          "pred_columns": [
+            "element",
+            "tally"
+          ],
+          "gold_columns": [
+            "element"
+          ],
+          "pred_data": {
+            "columns": [
+              "element",
+              "tally"
+            ],
+            "rows": [
+              [
+                "o",
+                49
+              ],
+              [
+                "s",
+                6
+              ],
+              [
+                "f",
+                1
+              ],
+              [
+                "cl",
+                26
+              ],
+              [
+                "na",
+                1
+              ],
+              [
+                "br",
+                7
+              ],
+              [
+                "h",
+                10
+              ],
+              [
+                "i",
+                1
+              ],
+              [
+                "n",
+                22
+              ],
+              [
+                "c",
+                320
+              ],
+              [
+                "ca",
+                1
+              ]
+            ]
+          },
+          "gold_data": {
+            "columns": [
+              "element"
+            ],
+            "rows": [
+              [
+                "c"
+              ],
+              [
+                "br"
+              ],
+              [
+                "cl"
+              ],
+              [
+                "s"
+              ],
+              [
+                "o"
+              ],
+              [
+                "n"
+              ],
+              [
+                "f"
+              ]
+            ]
+          }
+        },
+        "accuracy": 0.0
+      },
+      "task_396": {
+        "correct": false,
+        "error_type": "missing_or_mismatched_gold_column",
+        "error_detail": {
+          "gold_column_index": 0,
+          "pred_columns": [
+            "message"
+          ],
+          "gold_columns": [
+            "cast(count(case when t2.publisher_name = 'marvel comics' then 1 else null end) as real) * 100 / count(t1.id)"
+          ],
+          "pred_data": {
+            "columns": [
+              "message"
+            ],
+            "rows": [
+              [
+                "Required data not available"
+              ]
+            ]
+          },
+          "gold_data": {
+            "columns": [
+              "cast(count(case when t2.publisher_name = 'marvel comics' then 1 else null end) as real) * 100 / count(t1.id)"
+            ],
+            "rows": [
+              [
+                54.83870967741935
+              ]
+            ]
+          }
+        },
+        "accuracy": 0.0
+      },
+      "task_408": {
+        "correct": false,
+        "error_type": "missing_prediction",
+        "error_detail": "prediction.csv not found",
+        "accuracy": 0.0
+      },
+      "task_415": {
+        "correct": false,
+        "error_type": "missing_or_mismatched_gold_column",
+        "error_detail": {
+          "gold_column_index": 0,
+          "pred_columns": [
+            "constructorref",
+            "url"
+          ],
+          "gold_columns": [
+            "constructorref",
+            "url"
+          ],
+          "pred_data": {
+            "columns": [
+              "constructorref",
+              "url"
+            ],
+            "rows": [
+              [
+                "mclaren",
+                "http://en.wikipedia.org/wiki/McLaren"
+              ],
+              [
+                "bmw_sauber",
+                "http://en.wikipedia.org/wiki/BMW_Sauber"
+              ],
+              [
+                "williams",
+                "http://en.wikipedia.org/wiki/Williams_Grand_Prix_Engineering"
+              ],
+              [
+                "renault",
+                "http://en.wikipedia.org/wiki/Renault_F1"
+              ],
+              [
+                "toro_rosso",
+                "http://en.wikipedia.org/wiki/Scuderia_Toro_Rosso"
+              ],
+              [
+                "ferrari",
+                "http://en.wikipedia.org/wiki/Scuderia_Ferrari"
+              ],
+              [
+                "toyota",
+                "http://en.wikipedia.org/wiki/Toyota_Racing"
+              ],
+              [
+                "super_aguri",
+                "http://en.wikipedia.org/wiki/Super_Aguri_F1"
+              ],
+              [
+                "red_bull",
+                "http://en.wikipedia.org/wiki/Red_Bull_Racing"
+              ],
+              [
+                "force_india",
+                "http://en.wikipedia.org/wiki/Force_India"
+              ],
+              [
+                "honda",
+                "http://en.wikipedia.org/wiki/Honda_Racing_F1"
+              ],
+              [
+                "spyker",
+                "http://en.wikipedia.org/wiki/Spyker_F1"
+              ],
+              [
+                "mf1",
+                "http://en.wikipedia.org/wiki/Midland_F1_Racing"
+              ],
+              [
+                "spyker_mf1",
+                "http://en.wikipedia.org/wiki/Midland_F1_Racing"
+              ],
+              [
+                "sauber",
+                "http://en.wikipedia.org/wiki/Sauber"
+              ],
+              [
+                "bar",
+                "http://en.wikipedia.org/wiki/British_American_Racing"
+              ],
+              [
+                "jordan",
+                "http://en.wikipedia.org/wiki/Jordan_Grand_Prix"
+              ],
+              [
+                "minardi",
+                "http://en.wikipedia.org/wiki/Minardi"
+              ],
+              [
+                "jaguar",
+                "http://en.wikipedia.org/wiki/Jaguar_Racing"
+              ],
+              [
+                "prost",
+                "http://en.wikipedia.org/wiki/Prost_Grand_Prix"
+              ],
+              [
+                "arrows",
+                "http://en.wikipedia.org/wiki/Arrows_Grand_Prix_International"
+              ],
+              [
+                "benetton",
+                "http://en.wikipedia.org/wiki/Benetton_Formula"
+              ],
+              [
+                "brawn",
+                "http://en.wikipedia.org/wiki/Brawn_GP"
+              ],
+              [
+                "stewart",
+                "http://en.wikipedia.org/wiki/Stewart_Grand_Prix"
+              ],
+              [
+                "tyrrell",
+                "http://en.wikipedia.org/wiki/Tyrrell_Racing"
+              ],
+              [
+                "lola",
+                "http://en.wikipedia.org/wiki/MasterCard_Lola"
+              ],
+              [
+                "ligier",
+                "http://en.wikipedia.org/wiki/Ligier"
+              ],
+              [
+                "forti",
+                "http://en.wikipedia.org/wiki/Forti"
+              ],
+              [
+                "footwork",
+                "http://en.wikipedia.org/wiki/Footwork_Arrows"
+              ],
+              [
+                "pacific",
+                "http://en.wikipedia.org/wiki/Pacific_Racing"
+              ],
+              [
+                "simtek",
+                "http://en.wikipedia.org/wiki/Simtek"
+              ],
+              [
+                "team_lotus",
+                "http://en.wikipedia.org/wiki/Team_Lotus"
+              ],
+              [
+                "larrousse",
+                "http://en.wikipedia.org/wiki/Larrousse"
+              ],
+              [
+                "brabham",
+                "http://en.wikipedia.org/wiki/Brabham"
+              ],
+              [
+                "dallara",
+                "http://en.wikipedia.org/wiki/Dallara"
+              ],
+              [
+                "fondmetal",
+                "http://en.wikipedia.org/wiki/Fondmetal"
+              ],
+              [
+                "march",
+                "http://en.wikipedia.org/wiki/March_Engineering"
+              ],
+              [
+                "moda",
+                "http://en.wikipedia.org/wiki/Andrea_Moda_Formula"
+              ],
+              [
+                "ags",
+                "http://en.wikipedia.org/wiki/Automobiles_Gonfaronnaises_Sportives"
+              ],
+              [
+                "lambo",
+                "http://en.wikipedia.org/wiki/Modena_(racing_team)"
+              ],
+              [
+                "leyton",
+                "http://en.wikipedia.org/wiki/Leyton_House"
+              ],
+              [
+                "coloni",
+                "http://en.wikipedia.org/wiki/Enzo_Coloni_Racing_Car_Systems"
+              ],
+              [
+                "eurobrun",
+                "http://en.wikipedia.org/wiki/Euro_Brun"
+              ],
+              [
+                "osella",
+                "http://en.wikipedia.org/wiki/Osella"
+              ],
+              [
+                "onyx",
+                "http://en.wikipedia.org/wiki/Onyx_(racing_team)"
+              ],
+              [
+                "life",
+                "http://en.wikipedia.org/wiki/Life_(Racing_Team)"
+              ],
+              [
+                "rial",
+                "http://en.wikipedia.org/wiki/Rial_%28racing_team%29"
+              ],
+              [
+                "zakspeed",
+                "http://en.wikipedia.org/wiki/Zakspeed"
+              ],
+              [
+                "ram",
+                "http://en.wikipedia.org/wiki/RAM_Racing"
+              ],
+              [
+                "alfa",
+                "http://en.wikipedia.org/wiki/Alfa_Romeo_(Formula_One)"
+              ],
+              [
+                "spirit",
+                "http://en.wikipedia.org/wiki/Spirit_(racing_team)"
+              ],
+              [
+                "toleman",
+                "http://en.wikipedia.org/wiki/Toleman"
+              ],
+              [
+                "ats",
+                "http://en.wikipedia.org/wiki/ATS_(wheels)"
+              ],
+              [
+                "theodore",
+                "http://en.wikipedia.org/wiki/Theodore_Racing"
+              ],
+              [
+                "fittipaldi",
+                "http://en.wikipedia.org/wiki/Fittipaldi_%28constructor%29"
+              ],
+              [
+                "ensign",
+                "http://en.wikipedia.org/wiki/Ensign_%28racing_team%29"
+              ],
+              [
+                "shadow",
+                "http://en.wikipedia.org/wiki/Shadow_Racing_Cars"
+              ],
+              [
+                "wolf",
+                "http://en.wikipedia.org/wiki/Walter_Wolf_Racing"
+              ],
+              [
+                "merzario",
+                "http://en.wikipedia.org/wiki/Merzario"
+              ],
+              [
+                "kauhsen",
+                "http://en.wikipedia.org/wiki/Kauhsen"
+              ],
+              [
+                "rebaque",
+                "http://en.wikipedia.org/wiki/Rebaque"
+              ],
+              [
+                "surtees",
+                "http://en.wikipedia.org/wiki/Surtees"
+              ],
+              [
+                "hesketh",
+                "http://en.wikipedia.org/wiki/Hesketh_Racing"
+              ],
+              [
+                "martini",
+                "http://en.wikipedia.org/wiki/Martini_(cars)"
+              ],
+              [
+                "brm",
+                "http://en.wikipedia.org/wiki/BRM"
+              ],
+              [
+                "penske",
+                "http://en.wikipedia.org/wiki/Penske_Racing"
+              ],
+              [
+                "lec",
+                "http://en.wikipedia.org/wiki/LEC_(Formula_One)"
+              ],
+              [
+                "mcguire",
+                "http://en.wikipedia.org/wiki/McGuire_(Formula_One)"
+              ],
+              [
+                "boro",
+                "http://en.wikipedia.org/wiki/Boro_(Formula_One)"
+              ],
+              [
+                "apollon",
+                "http://en.wikipedia.org/wiki/Apollon_(Formula_One)"
+              ],
+              [
+                "kojima",
+                "http://en.wikipedia.org/wiki/Kojima_Engineering"
+              ],
+              [
+                "parnelli",
+                "http://en.wikipedia.org/wiki/Parnelli"
+              ],
+              [
+                "maki",
+                "http://en.wikipedia.org/wiki/Maki_(cars)"
+              ],
+              [
+                "hill",
+                "http://en.wikipedia.org/wiki/Hill_(constructor)"
+              ],
+              [
+                "lyncar",
+                "http://en.wikipedia.org/wiki/Lyncar"
+              ],
+              [
+                "trojan",
+                "http://en.wikipedia.org/wiki/Trojan_(Racing_team)"
+              ],
+              [
+                "amon",
+                "http://en.wikipedia.org/wiki/Amon_(Formula_One_team)"
+              ],
+              [
+                "token",
+                "http://en.wikipedia.org/wiki/Token_(Racing_team)"
+              ],
+              [
+                "iso_marlboro",
+                "http://en.wikipedia.org/wiki/Iso_Marlboro"
+              ],
+              [
+                "tecno",
+                "http://en.wikipedia.org/wiki/Tecno"
+              ],
+              [
+                "matra",
+                "http://en.wikipedia.org/wiki/Matra"
+              ],
+              [
+                "politoys",
+                "http://en.wikipedia.org/wiki/Frank_Williams_Racing_Cars"
+              ],
+              [
+                "connew",
+                "http://en.wikipedia.org/wiki/Connew"
+              ],
+              [
+                "bellasi",
+                "http://en.wikipedia.org/wiki/Bellasi"
+              ],
+              [
+                "tomaso",
+                "http://en.wikipedia.org/wiki/De_Tomaso"
+              ],
+              [
+                "cooper",
+                "http://en.wikipedia.org/wiki/Cooper_Car_Company"
+              ],
+              [
+                "eagle",
+                "http://en.wikipedia.org/wiki/Anglo_American_Racers"
+              ],
+              [
+                "lds",
+                "http://en.wikipedia.org/wiki/LDS_(automobile)"
+              ],
+              [
+                "protos",
+                "http://en.wikipedia.org/wiki/Protos_(constructor)"
+              ],
+              [
+                "shannon",
+                "http://en.wikipedia.org/wiki/Shannon_(Formula_One)"
+              ],
+              [
+                "scirocco",
+                "http://en.wikipedia.org/wiki/Scirocco-Powell"
+              ],
+              [
+                "re",
+                "http://en.wikipedia.org/wiki/RE_%28automobile%29"
+              ],
+              [
+                "brp",
+                "http://en.wikipedia.org/wiki/British_Racing_Partnership"
+              ],
+              [
+                "porsche",
+                "http://en.wikipedia.org/wiki/Porsche_in_Formula_One"
+              ],
+              [
+                "derrington",
+                "http://en.wikipedia.org/wiki/Derrington-Francis"
+              ],
+              [
+                "gilby",
+                "http://en.wikipedia.org/wiki/Gilby"
+              ],
+              [
+                "stebro",
+                "http://en.wikipedia.org/wiki/Stebro"
+              ],
+              [
+                "emeryson",
+                "http://en.wikipedia.org/wiki/Emeryson"
+              ],
+              [
+                "enb",
+                "http://en.wikipedia.org/wiki/Ecurie_Nationale_Belge"
+              ],
+              [
+                "jbw",
+                "http://en.wikipedia.org/wiki/JBW"
+              ],
+              [
+                "ferguson",
+                "http://en.wikipedia.org/wiki/Ferguson_Research_Ltd."
+              ],
+              [
+                "mbm",
+                "http://en.wikipedia.org/wiki/Monteverdi_Basel_Motors"
+              ],
+              [
+                "behra-porsche",
+                "http://en.wikipedia.org/wiki/Behra-Porsche"
+              ],
+              [
+                "maserati",
+                "http://en.wikipedia.org/wiki/Maserati"
+              ],
+              [
+                "scarab",
+                "http://en.wikipedia.org/wiki/Scarab_(constructor)"
+              ],
+              [
+                "watson",
+                "http://en.wikipedia.org/wiki/A.J._Watson"
+              ],
+              [
+                "epperly",
+                "http://en.wikipedia.org/wiki/Epperly"
+              ],
+              [
+                "phillips",
+                "http://en.wikipedia.org/wiki/Phillips_(constructor)"
+              ],
+              [
+                "lesovsky",
+                "http://en.wikipedia.org/wiki/Lesovsky"
+              ],
+              [
+                "trevis",
+                "http://en.wikipedia.org/wiki/Trevis"
+              ],
+              [
+                "meskowski",
+                "http://en.wikipedia.org/wiki/Meskowski"
+              ],
+              [
+                "kurtis_kraft",
+                "http://en.wikipedia.org/wiki/Kurtis_Kraft"
+              ],
+              [
+                "kuzma",
+                "http://en.wikipedia.org/wiki/Kuzma_(constructor)"
+              ],
+              [
+                "vhristensen",
+                "http://en.wikipedia.org/wiki/Christensen_(constructor)"
+              ],
+              [
+                "ewing",
+                "http://en.wikipedia.org/wiki/Ewing_(constructor)"
+              ],
+              [
+                "aston_martin",
+                "http://en.wikipedia.org/wiki/Aston_Martin"
+              ],
+              [
+                "vanwall",
+                "http://en.wikipedia.org/wiki/Vanwall"
+              ],
+              [
+                "moore",
+                "http://en.wikipedia.org/wiki/Moore_(constructor)"
+              ],
+              [
+                "dunn",
+                "http://en.wikipedia.org/wiki/Dunn_Engineering"
+              ],
+              [
+                "elder",
+                "http://en.wikipedia.org/wiki/Elder_(constructor)"
+              ],
+              [
+                "sutton",
+                "http://en.wikipedia.org/wiki/Sutton_(constructor)"
+              ],
+              [
+                "fry",
+                "http://en.wikipedia.org/wiki/Fry_(racing_team)"
+              ],
+              [
+                "tec-mec",
+                "http://en.wikipedia.org/wiki/Tec-Mec"
+              ],
+              [
+                "connaught",
+                "http://en.wikipedia.org/wiki/Connaught_Engineering"
+              ],
+              [
+                "alta",
+                "http://en.wikipedia.org/wiki/Alta_auto_racing_team"
+              ],
+              [
+                "osca",
+                "http://en.wikipedia.org/wiki/Officine_Specializate_Costruzione_Automobili"
+              ],
+              [
+                "gordini",
+                "http://en.wikipedia.org/wiki/Gordini"
+              ],
+              [
+                "stevens",
+                "http://en.wikipedia.org/wiki/Stevens_(constructor)"
+              ],
+              [
+                "bugatti",
+                "http://en.wikipedia.org/wiki/Bugatti"
+              ],
+              [
+                "mercedes",
+                "http://en.wikipedia.org/wiki/Mercedes-Benz_in_Formula_One"
+              ],
+              [
+                "lancia",
+                "http://en.wikipedia.org/wiki/Lancia_in_Formula_One"
+              ],
+              [
+                "hwm",
+                "http://en.wikipedia.org/wiki/Hersham_and_Walton_Motors"
+              ],
+              [
+                "schroeder",
+                "http://en.wikipedia.org/wiki/Schroeder_(constructor)"
+              ],
+              [
+                "pawl",
+                "http://en.wikipedia.org/wiki/Pawl_(constructor)"
+              ],
+              [
+                "pankratz",
+                "http://en.wikipedia.org/wiki/Pankratz"
+              ],
+              [
+                "arzani-volpini",
+                "http://en.wikipedia.org/wiki/Arzani-Volpini"
+              ],
+              [
+                "nichels",
+                "http://en.wikipedia.org/wiki/Nichels"
+              ],
+              [
+                "bromme",
+                "http://en.wikipedia.org/wiki/Bromme"
+              ],
+              [
+                "klenk",
+                "http://en.wikipedia.org/wiki/Klenk"
+              ],
+              [
+                "simca",
+                "http://en.wikipedia.org/wiki/Simca"
+              ],
+              [
+                "turner",
+                "http://en.wikipedia.org/wiki/Turner_(constructor)"
+              ],
+              [
+                "del_roy",
+                "http://en.wikipedia.org/wiki/Del_Roy"
+              ],
+              [
+                "veritas",
+                "http://en.wikipedia.org/wiki/Veritas_(constructor)"
+              ],
+              [
+                "bmw",
+                "http://en.wikipedia.org/wiki/BMW"
+              ],
+              [
+                "emw",
+                "http://en.wikipedia.org/wiki/Eisenacher_Motorenwerk"
+              ],
+              [
+                "afm",
+                "http://en.wikipedia.org/wiki/Alex_von_Falkenhausen_Motorenbau"
+              ],
+              [
+                "frazer_nash",
+                "http://en.wikipedia.org/wiki/Frazer_Nash"
+              ],
+              [
+                "sherman",
+                "http://en.wikipedia.org/wiki/Sherman_(constructor)"
+              ],
+              [
+                "deidt",
+                "http://en.wikipedia.org/wiki/Deidt"
+              ],
+              [
+                "era",
+                "http://en.wikipedia.org/wiki/English_Racing_Automobiles"
+              ],
+              [
+                "butterworth",
+                "http://en.wikipedia.org/wiki/Aston_Butterworth"
+              ],
+              [
+                "cisitalia",
+                "http://en.wikipedia.org/wiki/Cisitalia"
+              ],
+              [
+                "lago",
+                "http://en.wikipedia.org/wiki/Talbot-Lago"
+              ],
+              [
+                "hall",
+                "http://en.wikipedia.org/wiki/Hall_(constructor)"
+              ],
+              [
+                "marchese",
+                "http://en.wikipedia.org/wiki/Marchese_(constructor)"
+              ],
+              [
+                "langley",
+                "http://en.wikipedia.org/wiki/Langley_(constructor)"
+              ],
+              [
+                "rae",
+                "http://en.wikipedia.org/wiki/Rae_(motorsport)"
+              ],
+              [
+                "olson",
+                "http://en.wikipedia.org/wiki/Olson_(constructor)"
+              ],
+              [
+                "wetteroth",
+                "http://en.wikipedia.org/wiki/Wetteroth"
+              ],
+              [
+                "adams",
+                "http://en.wikipedia.org/wiki/Adams_(constructor)"
+              ],
+              [
+                "snowberger",
+                "http://en.wikipedia.org/wiki/Snowberger"
+              ],
+              [
+                "milano",
+                "http://en.wikipedia.org/wiki/Scuderia_Milano"
+              ],
+              [
+                "hrt",
+                "http://en.wikipedia.org/wiki/Hispania_Racing"
+              ],
+              [
+                "virgin",
+                "http://en.wikipedia.org/wiki/Virgin_Racing"
+              ],
+              [
+                "cooper-maserati",
+                "http://en.wikipedia.org/wiki/Cooper_Car_Company"
+              ],
+              [
+                "cooper-osca",
+                "http://en.wikipedia.org/wiki/Cooper_Car_Company"
+              ],
+              [
+                "cooper-borgward",
+                "http://en.wikipedia.org/wiki/Cooper_Car_Company"
+              ],
+              [
+                "cooper-climax",
+                "http://en.wikipedia.org/wiki/Cooper_Car_Company"
+              ],
+              [
+                "cooper-castellotti",
+                "http://en.wikipedia.org/wiki/Cooper_Car_Company"
+              ],
+              [
+                "lotus-climax",
+                "http://en.wikipedia.org/wiki/Team_Lotus"
+              ],
+              [
+                "lotus-maserati",
+                "http://en.wikipedia.org/wiki/Team_Lotus"
+              ],
+              [
+                "de_tomaso-osca",
+                "http://en.wikipedia.org/wiki/De_Tomaso"
+              ],
+              [
+                "de_tomaso-alfa_romeo",
+                "http://en.wikipedia.org/wiki/De_Tomaso"
+              ],
+              [
+                "lotus-brm",
+                "http://en.wikipedia.org/wiki/Team_Lotus"
+              ],
+              [
+                "lotus-borgward",
+                "http://en.wikipedia.org/wiki/Team_Lotus"
+              ],
+              [
+                "cooper-alfa_romeo",
+                "http://en.wikipedia.org/wiki/Cooper_Car_Company"
+              ],
+              [
+                "de_tomaso-ferrari",
+                "http://en.wikipedia.org/wiki/De_Tomaso"
+              ],
+              [
+                "lotus-ford",
+                "http://en.wikipedia.org/wiki/Team_Lotus"
+              ],
+              [
+                "brabham-brm",
+                "http://en.wikipedia.org/wiki/Brabham"
+              ],
+              [
+                "brabham-ford",
+                "http://en.wikipedia.org/wiki/Brabham"
+              ],
+              [
+                "brabham-climax",
+                "http://en.wikipedia.org/wiki/Brabham"
+              ],
+              [
+                "lds-climax",
+                "http://en.wikipedia.org/wiki/LDS_(automobile)"
+              ],
+              [
+                "lds-alfa_romeo",
+                "http://en.wikipedia.org/wiki/LDS_(automobile)"
+              ],
+              [
+                "cooper-ford",
+                "http://en.wikipedia.org/wiki/Cooper_Car_Company"
+              ],
+              [
+                "mclaren-ford",
+                "http://en.wikipedia.org/wiki/Team_McLaren"
+              ],
+              [
+                "mclaren-seren",
+                "http://en.wikipedia.org/wiki/Team_McLaren"
+              ],
+              [
+                "eagle-climax",
+                "http://en.wikipedia.org/wiki/Anglo_American_Racers"
+              ],
+              [
+                "eagle-weslake",
+                "http://en.wikipedia.org/wiki/Anglo_American_Racers"
+              ],
+              [
+                "brabham-repco",
+                "http://en.wikipedia.org/wiki/Brabham"
+              ],
+              [
+                "cooper-ferrari",
+                "http://en.wikipedia.org/wiki/Cooper_Car_Company"
+              ],
+              [
+                "cooper-ats",
+                "http://en.wikipedia.org/wiki/Cooper_Car_Company"
+              ],
+              [
+                "mclaren-brm",
+                "http://en.wikipedia.org/wiki/McLaren_(racing)"
+              ],
+              [
+                "cooper-brm",
+                "http://en.wikipedia.org/wiki/Cooper_Car_Company"
+              ],
+              [
+                "matra-ford",
+                "http://en.wikipedia.org/wiki/Matra"
+              ],
+              [
+                "brm-ford",
+                "http://en.wikipedia.org/wiki/BRM"
+              ],
+              [
+                "mclaren-alfa_romeo",
+                "http://en.wikipedia.org/wiki/McLaren_(racing)"
+              ],
+              [
+                "march-alfa_romeo",
+                "http://en.wikipedia.org/wiki/March_Engineering"
+              ],
+              [
+                "march-ford",
+                "http://en.wikipedia.org/wiki/March_Engineering"
+              ],
+              [
+                "lotus-pw",
+                "http://en.wikipedia.org/wiki/Team_Lotus"
+              ],
+              [
+                "shadow-ford",
+                "http://en.wikipedia.org/wiki/Shadow_Racing_Cars"
+              ]
+            ]
+          },
+          "gold_data": {
+            "columns": [
+              "constructorref",
+              "url"
+            ],
+            "rows": [
+              [
+                "mclaren",
+                "http://en.wikipedia.org/wiki/McLaren"
+              ]
+            ]
+          }
+        },
+        "accuracy": 0.0
+      },
+      "task_418": {
+        "correct": false,
+        "error_type": "missing_prediction",
+        "error_detail": "prediction.csv not found",
+        "accuracy": 0.0
+      },
+      "task_420": {
+        "correct": false,
+        "error_type": "missing_prediction",
+        "error_detail": "prediction.csv not found",
+        "accuracy": 0.0
+      },
+      "task_80": {
+        "correct": false,
+        "error_type": "missing_or_mismatched_gold_column",
+        "error_detail": {
+          "gold_column_index": 0,
+          "pred_columns": [
+            "drivers.number"
+          ],
+          "gold_columns": [
+            "number"
+          ],
+          "pred_data": {
+            "columns": [
+              "drivers.number"
+            ],
+            "rows": []
+          },
+          "gold_data": {
+            "columns": [
+              "number"
+            ],
+            "rows": [
+              [
+                3
+              ],
+              [
+                5
+              ]
+            ]
+          }
+        },
+        "accuracy": 0.0
+      },
+      "task_86": {
+        "correct": false,
+        "error_type": "missing_or_mismatched_gold_column",
+        "error_detail": {
+          "gold_column_index": 0,
+          "pred_columns": [
+            "races.name"
+          ],
+          "gold_columns": [
+            "name"
+          ],
+          "pred_data": {
+            "columns": [
+              "races.name"
+            ],
+            "rows": []
+          },
+          "gold_data": {
+            "columns": [
+              "name"
+            ],
+            "rows": [
+              [
+                "Australian Grand Prix"
+              ],
+              [
+                "Malaysian Grand Prix"
+              ],
+              [
+                "Brazilian Grand Prix"
+              ],
+              [
+                "San Marino Grand Prix"
+              ],
+              [
+                "Spanish Grand Prix"
+              ],
+              [
+                "Austrian Grand Prix"
+              ],
+              [
+                "Monaco Grand Prix"
+              ],
+              [
+                "Canadian Grand Prix"
+              ],
+              [
+                "European Grand Prix"
+              ],
+              [
+                "British Grand Prix"
+              ],
+              [
+                "French Grand Prix"
+              ],
+              [
+                "German Grand Prix"
+              ],
+              [
+                "Hungarian Grand Prix"
+              ],
+              [
+                "Belgian Grand Prix"
+              ],
+              [
+                "Italian Grand Prix"
+              ],
+              [
+                "United States Grand Prix"
+              ]
+            ]
+          }
+        },
+        "accuracy": 0.0
+      },
+      "task_89": {
+        "correct": false,
+        "error_type": "missing_or_mismatched_gold_column",
+        "error_detail": {
+          "gold_column_index": 0,
+          "pred_columns": [
+            "results.time"
+          ],
+          "gold_columns": [
+            "time"
+          ],
+          "pred_data": {
+            "columns": [
+              "results.time"
+            ],
+            "rows": [
+              [
+                14.925
+              ]
+            ]
+          },
+          "gold_data": {
+            "columns": [
+              "time"
+            ],
+            "rows": [
+              [
+                16.445
+              ]
+            ]
+          }
+        },
+        "accuracy": 0.0
+      }
+    }
+  }
+}

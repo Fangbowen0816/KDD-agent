@@ -71,7 +71,10 @@ def build_model_adapter(config: AppConfig):
 
 
 def _write_json(path: Path, payload: dict[str, Any]) -> None:
-    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temp_path = path.with_name(f"{path.name}.tmp")
+    temp_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n")
+    temp_path.replace(path)
 
 
 def _write_csv(path: Path, columns: list[str], rows: list[list[Any]]) -> None:
@@ -89,6 +92,8 @@ def _failure_run_result_payload(task_id: str, failure_reason: str) -> dict[str, 
         "answer": None,
         "steps": [],
         "failure_reason": failure_reason,
+        "final_sql": None,
+        "status": "failed",
         "succeeded": False,
     }
 
@@ -99,25 +104,46 @@ def _run_single_task_core(
     config: AppConfig,
     model=None,
     tools: ToolRegistry | None = None,
+    trace_path: Path | None = None,
 ) -> dict[str, Any]:
     public_dataset = DABenchPublicDataset(config.dataset.root_path)
     task = public_dataset.get_task(task_id)
 
+    def write_trace_snapshot(payload: dict[str, Any]) -> None:
+        if trace_path is None:
+            return
+        _write_json(trace_path, payload)
+
     agent = ReActAgent(
         model=model or build_model_adapter(config),
         tools=tools or create_default_tool_registry(),
-        config=ReActAgentConfig(max_steps=config.agent.max_steps),
+        config=ReActAgentConfig(
+            max_steps=config.agent.max_steps,
+            max_sql_attempts=config.agent.max_sql_attempts,
+            sql_result_limit=config.agent.sql_result_limit,
+            catalog_sample_rows=config.agent.catalog_sample_rows,
+        ),
+        trace_callback=write_trace_snapshot,
     )
     run_result = agent.run(task)
     return run_result.to_dict()
 
 
-def _run_single_task_in_subprocess(task_id: str, config: AppConfig, queue: multiprocessing.Queue[Any]) -> None:
+def _run_single_task_in_subprocess(
+    task_id: str,
+    config: AppConfig,
+    trace_path: str,
+    queue: multiprocessing.Queue[Any],
+) -> None:
     try:
         queue.put(
             {
                 "ok": True,
-                "run_result": _run_single_task_core(task_id=task_id, config=config),
+                "run_result": _run_single_task_core(
+                    task_id=task_id,
+                    config=config,
+                    trace_path=Path(trace_path),
+                ),
             }
         )
     except BaseException as exc:  # noqa: BLE001
@@ -129,15 +155,43 @@ def _run_single_task_in_subprocess(task_id: str, config: AppConfig, queue: multi
         )
 
 
-def _run_single_task_with_timeout(*, task_id: str, config: AppConfig) -> dict[str, Any]:
+def _load_trace_snapshot(trace_path: Path) -> dict[str, Any] | None:
+    if not trace_path.exists():
+        return None
+    try:
+        payload = json.loads(trace_path.read_text())
+    except (OSError, json.JSONDecodeError):
+        return None
+    if not isinstance(payload, dict):
+        return None
+    return payload
+
+
+def _timeout_trace_payload(task_id: str, trace_path: Path, failure_reason: str) -> dict[str, Any]:
+    payload = _load_trace_snapshot(trace_path)
+    if payload is None:
+        return _failure_run_result_payload(task_id, failure_reason)
+    payload["task_id"] = task_id
+    payload["failure_reason"] = failure_reason
+    payload["status"] = "timed_out"
+    payload["succeeded"] = False
+    return payload
+
+
+def _run_single_task_with_timeout(
+    *,
+    task_id: str,
+    config: AppConfig,
+    trace_path: Path,
+) -> dict[str, Any]:
     timeout_seconds = config.run.task_timeout_seconds
     if timeout_seconds <= 0:
-        return _run_single_task_core(task_id=task_id, config=config)
+        return _run_single_task_core(task_id=task_id, config=config, trace_path=trace_path)
 
     queue: multiprocessing.Queue[Any] = multiprocessing.Queue()
     process = multiprocessing.Process(
         target=_run_single_task_in_subprocess,
-        args=(task_id, config, queue),
+        args=(task_id, config, str(trace_path), queue),
     )
     process.start()
     process.join(timeout_seconds)
@@ -148,16 +202,34 @@ def _run_single_task_with_timeout(*, task_id: str, config: AppConfig) -> dict[st
         if process.is_alive():
             process.kill()
             process.join()
-        return _failure_run_result_payload(task_id, f"Task timed out after {timeout_seconds} seconds.")
+        return _timeout_trace_payload(
+            task_id,
+            trace_path,
+            f"Task timed out after {timeout_seconds} seconds.",
+        )
 
     if queue.empty():
         exit_code = process.exitcode
         if exit_code not in (None, 0):
+            failure_reason = f"Task exited unexpectedly with exit code {exit_code}."
+            payload = _load_trace_snapshot(trace_path)
+            if payload is not None:
+                payload["failure_reason"] = failure_reason
+                payload["status"] = "failed"
+                payload["succeeded"] = False
+                return payload
             return _failure_run_result_payload(
                 task_id,
-                f"Task exited unexpectedly with exit code {exit_code}.",
+                failure_reason,
             )
-        return _failure_run_result_payload(task_id, "Task exited without returning a result.")
+        failure_reason = "Task exited without returning a result."
+        payload = _load_trace_snapshot(trace_path)
+        if payload is not None:
+            payload["failure_reason"] = failure_reason
+            payload["status"] = "failed"
+            payload["succeeded"] = False
+            return payload
+        return _failure_run_result_payload(task_id, failure_reason)
 
     result = queue.get()
     if result.get("ok"):
@@ -200,10 +272,23 @@ def run_single_task(
     tools: ToolRegistry | None = None,
 ) -> TaskRunArtifacts:
     started_at = perf_counter()
+    task_output_dir = run_output_dir / task_id
+    task_output_dir.mkdir(parents=True, exist_ok=True)
+    trace_path = task_output_dir / "trace.json"
     if model is None and tools is None:
-        run_result = _run_single_task_with_timeout(task_id=task_id, config=config)
+        run_result = _run_single_task_with_timeout(
+            task_id=task_id,
+            config=config,
+            trace_path=trace_path,
+        )
     else:
-        run_result = _run_single_task_core(task_id=task_id, config=config, model=model, tools=tools)
+        run_result = _run_single_task_core(
+            task_id=task_id,
+            config=config,
+            model=model,
+            tools=tools,
+            trace_path=trace_path,
+        )
     run_result["e2e_elapsed_seconds"] = round(perf_counter() - started_at, 3)
     return _write_task_outputs(task_id, run_output_dir, run_result)
 

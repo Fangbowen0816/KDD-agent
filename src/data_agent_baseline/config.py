@@ -27,6 +27,9 @@ class AgentConfig:
     api_base: str = "https://api.openai.com/v1"
     api_key: str = ""
     max_steps: int = 16
+    max_sql_attempts: int = 5
+    sql_result_limit: int = 200
+    catalog_sample_rows: int = 3
     temperature: float = 0.0
 
 
@@ -72,6 +75,11 @@ def load_app_config(config_path: Path) -> AppConfig:
         api_base=str(agent_payload.get("api_base", agent_defaults.api_base)),
         api_key=str(agent_payload.get("api_key", agent_defaults.api_key)),
         max_steps=int(agent_payload.get("max_steps", agent_defaults.max_steps)),
+        max_sql_attempts=int(agent_payload.get("max_sql_attempts", agent_defaults.max_sql_attempts)),
+        sql_result_limit=int(agent_payload.get("sql_result_limit", agent_defaults.sql_result_limit)),
+        catalog_sample_rows=int(
+            agent_payload.get("catalog_sample_rows", agent_defaults.catalog_sample_rows)
+        ),
         temperature=float(agent_payload.get("temperature", agent_defaults.temperature)),
     )
     raw_run_id = run_payload.get("run_id")

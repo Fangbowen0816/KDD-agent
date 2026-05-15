@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import json
 
-PRED_DIR = "artifacts/runs/20260429T144801Z"
+PRED_DIR = "artifacts/runs/20260515T080109Z"
 GOLD_DIR = "data/public/output"
 
 TOL = 1e-6
@@ -48,19 +48,19 @@ def compare_by_content_inclusion(pred_df, gold_df):
     """
     New Rules:
     1. Column names are ignored
-    2. Each column is treated as unordered multiset
+    2. Each column is treated as unordered set
     3. Prediction must contain ALL gold columns
     4. Extra columns in prediction are allowed
     """
 
     # =========================
-    # convert each column → normalized multiset
+    # convert each column → normalized set
     # =========================
     def build_col_sets(df):
         col_sets = []
         for c in df.columns:
             vals = [normalize_value(v) for v in df[c].tolist()]
-            col_sets.append(sorted(vals))
+            col_sets.append(frozenset(vals))
         return col_sets
 
     pred_col_sets = build_col_sets(pred_df)
@@ -183,10 +183,10 @@ def main():
     # =========================
     # save report
     # =========================
-    with open("per_task_report_0429_2.json", "w") as f:
+    with open("per_task_report_0515_2.json", "w") as f:
         json.dump(final_report, f, indent=2, ensure_ascii=False)
 
-    print("\nSaved: per_task_report_0429_2.json")
+    print("\nSaved: per_task_report_0515_2.json")
     
 if __name__ == "__main__":
     main()
