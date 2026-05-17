@@ -1,12 +1,19 @@
 import os
 import pandas as pd
-import numpy as np
 import json
+import re
+from collections import Counter
+from datetime import date, datetime, timezone
+from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
 
-PRED_DIR = "artifacts/runs/20260515T080109Z"
+PRED_DIR = "artifacts/runs/20260516T121725Z"
 GOLD_DIR = "data/public/output"
 
-TOL = 1e-6
+NULL_STRINGS = {"", "null", "none", "nan", "nat", "<na>"}
+DECIMAL_QUANT = Decimal("0.01")
+DATE_RE = re.compile(r"^(\d{4})-(\d{1,2})-(\d{1,2})$")
+DATETIME_HINT_RE = re.compile(r"^\d{4}-\d{1,2}-\d{1,2}[ T]\d{1,2}:\d{1,2}")
+LETTER_RE = re.compile(r"[A-Za-z\u4e00-\u9fff]")
 
 
 # =========================
@@ -14,23 +21,73 @@ TOL = 1e-6
 # =========================
 def normalize_value(v):
     """
-    unify numeric + string formats
+    Normalize values before building column signatures.
     """
     if pd.isna(v):
-        return "__NA__"
+        return ""
+
+    text = str(v).strip(" \r\n\t")
+    if text.lower() in NULL_STRINGS:
+        return ""
+
+    date_value = _normalize_date(text)
+    if date_value is not None:
+        return date_value
+
+    datetime_value = _normalize_datetime(text)
+    if datetime_value is not None:
+        return datetime_value
+
+    number_value = _normalize_number(text)
+    if number_value is not None:
+        return number_value
+
+    return text
+
+
+def _normalize_number(text):
     try:
-        return round(float(v), 6)
-    except:
-        return str(v).strip().lower()
+        value = Decimal(text.replace(",", ""))
+    except InvalidOperation:
+        return None
+    if not value.is_finite():
+        return None
+    return str(value.quantize(DECIMAL_QUANT, rounding=ROUND_HALF_UP))
 
 
-def normalize_col(col):
-    return col.strip().lower()
+def _normalize_date(text):
+    match = DATE_RE.match(text)
+    if match is None:
+        return None
+    try:
+        year, month, day = (int(part) for part in match.groups())
+        return date(year, month, day).isoformat()
+    except ValueError:
+        return None
+
+
+def _normalize_datetime(text):
+    if DATETIME_HINT_RE.match(text) is None:
+        return None
+
+    candidate = text.replace(" ", "T", 1)
+    if candidate.endswith("Z"):
+        candidate = f"{candidate[:-1]}+00:00"
+    try:
+        parsed = datetime.fromisoformat(candidate)
+    except ValueError:
+        return None
+
+    if parsed.tzinfo is None:
+        return parsed.isoformat()
+
+    utc_value = parsed.astimezone(timezone.utc)
+    rendered = utc_value.isoformat().replace("+00:00", "Z")
+    return rendered
 
 
 def load_csv(path):
-    df = pd.read_csv(path)
-    df.columns = [normalize_col(c) for c in df.columns]
+    df = pd.read_csv(path, keep_default_na=False)
     return df
 
 
@@ -46,56 +103,195 @@ def df_to_serializable(df):
 # =========================
 def compare_by_content_inclusion(pred_df, gold_df):
     """
-    New Rules:
-    1. Column names are ignored
-    2. Each column is treated as unordered set
-    3. Prediction must contain ALL gold columns
-    4. Extra columns in prediction are allowed
+    Compare by column-level content signatures.
+
+    Column names and column order are ignored. Row order is ignored by sorting
+    normalized cell values inside each column signature. Duplicate values inside
+    a column and duplicate columns are both preserved.
     """
 
-    # =========================
-    # convert each column → normalized set
-    # =========================
-    def build_col_sets(df):
-        col_sets = []
-        for c in df.columns:
-            vals = [normalize_value(v) for v in df[c].tolist()]
-            col_sets.append(frozenset(vals))
-        return col_sets
+    pred_signatures = build_column_signatures(pred_df)
+    gold_signatures = build_column_signatures(gold_df)
+    matched_count, missing_signatures = count_signature_coverage(
+        pred_signatures,
+        gold_signatures,
+    )
+    total_gold_columns = len(gold_signatures)
+    accuracy = matched_count / total_gold_columns if total_gold_columns else 1.0
 
-    pred_col_sets = build_col_sets(pred_df)
-    gold_col_sets = build_col_sets(gold_df)
+    if matched_count == total_gold_columns:
+        return True, None, None, 1.0
 
-    # =========================
-    # try to match every gold column
-    # =========================
-    pred_used = [False] * len(pred_col_sets)
+    # 名称字段允许拆列/合列；这里只用内容生成候选签名，不依赖列名。
+    if _match_gold_signatures(
+        build_column_match_options(gold_df),
+        build_column_match_options(pred_df),
+        len(gold_df.columns),
+    ):
+        return True, None, None, 1.0
 
-    for j, gc in enumerate(gold_col_sets):
-        matched = False
+    return False, "missing_or_mismatched_gold_column", {
+        "pred_columns": pred_df.columns.tolist(),
+        "gold_columns": gold_df.columns.tolist(),
+        "pred_data": df_to_serializable(pred_df),
+        "gold_data": df_to_serializable(gold_df),
+        "pred_signatures": _signature_debug(pred_signatures),
+        "gold_signatures": _signature_debug(gold_signatures),
+        "missing_signatures": _missing_signature_debug(missing_signatures),
+    }, accuracy
 
-        for i, pc in enumerate(pred_col_sets):
-            if pred_used[i]:
+
+def build_column_signatures(df):
+    signatures = []
+    normalized_columns = [
+        [normalize_value(v) for v in df[column].tolist()]
+        for column in df.columns
+    ]
+
+    for index, values in enumerate(normalized_columns):
+        signatures.append({
+            "columns": frozenset({index}),
+            "label": df.columns[index],
+            "kind": "single",
+            "values": _column_signature(values),
+        })
+
+    return signatures
+
+
+def build_column_match_options(df):
+    signatures = build_column_signatures(df)
+    normalized_columns = [
+        [normalize_value(v) for v in df[column].tolist()]
+        for column in df.columns
+    ]
+
+    for left_index in range(len(normalized_columns)):
+        for right_index in range(left_index + 1, len(normalized_columns)):
+            left_values = normalized_columns[left_index]
+            right_values = normalized_columns[right_index]
+            if not _looks_like_name_pair(left_values, right_values):
                 continue
 
-            if pc == gc:
-                pred_used[i] = True
-                matched = True
-                break
+            for first_index, last_index in (
+                (left_index, right_index),
+                (right_index, left_index),
+            ):
+                full_names = [
+                    _join_name_parts(first, last)
+                    for first, last in zip(
+                        normalized_columns[first_index],
+                        normalized_columns[last_index],
+                        strict=False,
+                    )
+                ]
+                signatures.append({
+                    "columns": frozenset({left_index, right_index}),
+                    "label": f"col#{first_index}+col#{last_index}",
+                    "kind": "full_name",
+                    "values": _column_signature(full_names),
+                })
 
-        if not matched:
-            return False, "missing_or_mismatched_gold_column", {
-                "gold_column_index": j,
-                "pred_columns": pred_df.columns.tolist(),
-                "gold_columns": gold_df.columns.tolist(),
-                "pred_data": df_to_serializable(pred_df),
-                "gold_data": df_to_serializable(gold_df)
-            }, 0.0
+    return signatures
 
-    # =========================
-    # all gold columns matched → correct
-    # =========================
-    return True, None, None, 1.0
+
+def _column_signature(values):
+    return tuple(sorted(values))
+
+
+def count_signature_coverage(pred_signatures, gold_signatures):
+    pred_counts = Counter(signature["values"] for signature in pred_signatures)
+    gold_counts = Counter(signature["values"] for signature in gold_signatures)
+
+    matched_count = 0
+    missing = {}
+    for signature, gold_count in gold_counts.items():
+        pred_count = pred_counts.get(signature, 0)
+        matched_count += min(pred_count, gold_count)
+        if pred_count < gold_count:
+            missing[signature] = gold_count - pred_count
+
+    return matched_count, missing
+
+
+def _looks_like_name_pair(left_values, right_values):
+    checked = 0
+    name_like = 0
+    for left, right in zip(left_values, right_values, strict=False):
+        if not left or not right:
+            continue
+        checked += 1
+        if _looks_like_name_part(left) and _looks_like_name_part(right):
+            name_like += 1
+
+    return checked > 0 and name_like / checked >= 0.8
+
+
+def _looks_like_name_part(value):
+    text = str(value).strip()
+    if not text:
+        return False
+    if any(char.isdigit() for char in text):
+        return False
+    return LETTER_RE.search(text) is not None
+
+
+def _join_name_parts(first, last):
+    if first and last:
+        return f"{first} {last}"
+    return first or last
+
+
+def _match_gold_signatures(gold_signatures, pred_signatures, gold_column_count):
+    target_columns = frozenset(range(gold_column_count))
+
+    def search(covered_gold_columns, used_pred_columns):
+        if covered_gold_columns == target_columns:
+            return True
+
+        next_column = min(target_columns - covered_gold_columns)
+        candidate_gold_signatures = [
+            signature for signature in gold_signatures
+            if next_column in signature["columns"]
+        ]
+        candidate_gold_signatures.sort(key=lambda item: len(item["columns"]), reverse=True)
+
+        for gold_signature in candidate_gold_signatures:
+            for pred_signature in pred_signatures:
+                if pred_signature["columns"] & used_pred_columns:
+                    continue
+                if gold_signature["values"] != pred_signature["values"]:
+                    continue
+                if search(
+                    covered_gold_columns | gold_signature["columns"],
+                    used_pred_columns | pred_signature["columns"],
+                ):
+                    return True
+        return False
+
+    return search(frozenset(), frozenset())
+
+
+def _signature_debug(signatures):
+    return [
+        {
+            "label": signature["label"],
+            "kind": signature["kind"],
+            "columns": sorted(signature["columns"]),
+            "values": list(signature["values"]),
+        }
+        for signature in signatures
+    ]
+
+
+def _missing_signature_debug(missing_signatures):
+    return [
+        {
+            "missing_count": count,
+            "values": list(signature),
+        }
+        for signature, count in missing_signatures.items()
+    ]
 
 
 # =========================
@@ -183,10 +379,10 @@ def main():
     # =========================
     # save report
     # =========================
-    with open("per_task_report_0515_2.json", "w") as f:
+    with open("per_task_report_0515_4.json", "w") as f:
         json.dump(final_report, f, indent=2, ensure_ascii=False)
 
-    print("\nSaved: per_task_report_0515_2.json")
+    print("\nSaved: per_task_report_0515_4.json")
     
 if __name__ == "__main__":
     main()

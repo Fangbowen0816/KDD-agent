@@ -4,6 +4,13 @@ from data_agent_baseline.agents.model import (
     ModelStep,
     OpenAIModelAdapter,
 )
+from data_agent_baseline.agents.knowledge import (
+    KnowledgeChunk,
+    build_sql_knowledge_constraints,
+    parse_knowledge_markdown,
+    render_retrieved_knowledge,
+    retrieve_knowledge_chunks,
+)
 from data_agent_baseline.agents.prompt import (
     BASE_SYSTEM_PROMPT,
     CATALOG_PROMPT,
@@ -26,6 +33,7 @@ __all__ = [
     "AgentRuntimeState",
     "BASE_SYSTEM_PROMPT",
     "CATALOG_PROMPT",
+    "KnowledgeChunk",
     "ModelAdapter",
     "ModelMessage",
     "ModelStep",
@@ -36,6 +44,7 @@ __all__ = [
     "ReActAgent",
     "ReActAgentConfig",
     "StepRecord",
+    "build_sql_knowledge_constraints",
     "build_answer_prompt",
     "build_catalog_prompt",
     "build_nl2sql_prompt",
@@ -43,5 +52,8 @@ __all__ = [
     "build_plan_prompt",
     "build_system_prompt",
     "build_task_prompt",
+    "parse_knowledge_markdown",
     "parse_model_step",
+    "render_retrieved_knowledge",
+    "retrieve_knowledge_chunks",
 ]

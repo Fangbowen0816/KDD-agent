@@ -67,6 +67,9 @@ def build_model_adapter(config: AppConfig):
         api_base=config.agent.api_base,
         api_key=config.agent.api_key,
         temperature=config.agent.temperature,
+        request_timeout_seconds=config.agent.model_request_timeout_seconds,
+        max_retries=config.agent.model_max_retries,
+        retry_backoff_seconds=config.agent.model_retry_backoff_seconds,
     )
 
 
@@ -122,6 +125,10 @@ def _run_single_task_core(
             max_sql_attempts=config.agent.max_sql_attempts,
             sql_result_limit=config.agent.sql_result_limit,
             catalog_sample_rows=config.agent.catalog_sample_rows,
+            enable_knowledge_retrieval=config.agent.enable_knowledge_retrieval,
+            knowledge_top_k_plan=config.agent.knowledge_top_k_plan,
+            knowledge_top_k_sql=config.agent.knowledge_top_k_sql,
+            knowledge_chunk_max_chars=config.agent.knowledge_chunk_max_chars,
         ),
         trace_callback=write_trace_snapshot,
     )

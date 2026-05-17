@@ -10,11 +10,15 @@ import sqlglot
 from sqlglot import exp
 
 
+DEFAULT_MAX_LOAD_FILE_BYTES = 512 * 1024 * 1024
+
+
 class DataEngine:
 
-    def __init__(self, db_path=":memory:"):
+    def __init__(self, db_path=":memory:", max_load_file_bytes=DEFAULT_MAX_LOAD_FILE_BYTES):
         self.conn = duckdb.connect(db_path)
         self.db_path = db_path
+        self.max_load_file_bytes = max_load_file_bytes
 
         self.tables = set()
         self.sqlite_load = False
@@ -23,6 +27,7 @@ class DataEngine:
     def register(self, file_path):
         try:
             file_path = os.path.abspath(file_path)
+            file_size_bytes = self._validate_load_file_size(file_path)
             file_type = self._detect_type(file_path)
 
             if file_type == "csv":
@@ -40,6 +45,7 @@ class DataEngine:
                 "table": table_name,
                 "source_path": file_path,
                 "source_type": file_type,
+                "file_size_bytes": file_size_bytes,
             }
 
         except FileNotFoundError:
@@ -79,6 +85,7 @@ class DataEngine:
                         "table": result.get("table"),
                         "tables": source_tables,
                         "source_type": result.get("source_type"),
+                        "file_size_bytes": result.get("file_size_bytes"),
                     }
                 )
             else:
@@ -94,6 +101,7 @@ class DataEngine:
             "loaded_files": loaded_files,
             "failed_files": failed_files,
             "table_count": len(self.tables),
+            "max_load_file_bytes": self.max_load_file_bytes,
         }
 
     def query(self, sql, limit: int = 200):
@@ -168,6 +176,20 @@ class DataEngine:
             case _:
                 raise ValueError(f"Unsupported file type: {ext}")
 
+    def _validate_load_file_size(self, file_path):
+        file_size_bytes = os.path.getsize(file_path)
+        if (
+            self.max_load_file_bytes is not None
+            and file_size_bytes > self.max_load_file_bytes
+        ):
+            size_mb = file_size_bytes / 1024 / 1024
+            limit_mb = self.max_load_file_bytes / 1024 / 1024
+            raise ValueError(
+                f"File exceeds DataEngine load limit: {size_mb:.2f} MiB > "
+                f"{limit_mb:.2f} MiB"
+            )
+        return file_size_bytes
+
     def _register_csv(self, table_name, file_path):
         try:
             sql = f"""
@@ -193,17 +215,22 @@ class DataEngine:
     def _register_json(self, table_name, file_path):
         try:
             wrapper_meta = self._detect_records_wrapper(file_path)
+            read_options = self._json_read_options()
             if wrapper_meta is not None:
                 sql = f"""
                 CREATE OR REPLACE VIEW {table_name} AS
                 SELECT r.*
-                FROM read_json_auto({self._quote_string(file_path)}) AS src,
+                FROM read_json_auto(
+                    {self._quote_string(file_path)}{read_options}
+                ) AS src,
                      UNNEST(src.records) AS t(r);
                 """
             else:
                 sql = f"""
                 CREATE OR REPLACE VIEW {table_name} AS
-                SELECT * FROM read_json_auto({self._quote_string(file_path)});
+                SELECT * FROM read_json_auto(
+                    {self._quote_string(file_path)}{read_options}
+                );
                 """
             self.conn.execute(sql)
             self.tables.add(table_name)
@@ -221,6 +248,11 @@ class DataEngine:
         except Exception as e:
             print(f"[JSON REGISTER ERROR] {e}")
             raise
+
+    def _json_read_options(self):
+        if self.max_load_file_bytes is None:
+            return ""
+        return f", maximum_object_size={int(self.max_load_file_bytes)}"
 
     def _register_sqlite(self, file_path):
         try:

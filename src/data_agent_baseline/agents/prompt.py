@@ -299,11 +299,22 @@ def build_plan_prompt(
     catalog: dict[str, Any],
     engine_schema: dict[str, Any],
     plan_doc_text: str,
+    retrieved_knowledge: str = "(none)",
 ) -> str:
     return (
         f"{PLAN_PROMPT}\n\n"
         f"Question:\n{task.question}\n\n"
         f"Generated catalog:\n{_render_payload(catalog)}\n\n"
+        "Retrieved knowledge from context/knowledge.md:\n"
+        f"{retrieved_knowledge or '(none)'}\n\n"
+        "Knowledge usage rules:\n"
+        "- Use retrieved knowledge for KPI formulas, calculation logic, filters, "
+        "date/time formats, unit conversions, ambiguity resolution, and reusable query patterns.\n"
+        "- Treat retrieved knowledge as semantic guidance only. Use only tables and columns "
+        "that exist in the DataEngine schema.\n"
+        "- If retrieved knowledge conflicts with the observed schema, the observed schema wins.\n"
+        "- Capture important knowledge-derived constraints in filters, aggregations, group_by, "
+        "order_by, final_columns, or validation_checks.\n\n"
         f"Plan documents from context/doc:\n{plan_doc_text or '(missing)'}\n\n"
         f"DataEngine schema:\n{_render_payload(engine_schema)}"
     )
@@ -318,6 +329,7 @@ def build_nl2sql_prompt(
     recent_attempts: list[dict[str, Any]],
     tool_descriptions: str,
     sql_result_limit: int,
+    sql_knowledge_constraints: str = "(none)",
 ) -> str:
     schema_mode = "focused_schema" if focused_schema else "full_schema"
     return (
@@ -326,6 +338,14 @@ def build_nl2sql_prompt(
         f"Use limit={sql_result_limit} unless a smaller limit is sufficient.\n\n"
         f"Question:\n{task.question}\n\n"
         f"Plan:\n{_render_payload(plan)}\n\n"
+        "SQL knowledge constraints:\n"
+        f"{sql_knowledge_constraints or '(none)'}\n\n"
+        "SQL constraint usage rules:\n"
+        "- The plan is the source of truth. Use these constraints only as guardrails while "
+        "translating it.\n"
+        "- Do not redesign query intent from knowledge at this stage.\n"
+        "- Do not use any table or column name from knowledge unless it exists in the "
+        "focused/full schema.\n\n"
         f"Schema strategy: prefer {schema_mode} and fall back to full_schema only when needed.\n\n"
         f"Focused schema:\n{_render_payload(focused_schema or {'tables': {}})}\n\n"
         f"Full schema:\n{_render_payload(engine_schema)}\n\n"

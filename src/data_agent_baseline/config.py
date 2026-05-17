@@ -30,6 +30,13 @@ class AgentConfig:
     max_sql_attempts: int = 5
     sql_result_limit: int = 200
     catalog_sample_rows: int = 3
+    enable_knowledge_retrieval: bool = True
+    knowledge_top_k_plan: int = 4
+    knowledge_top_k_sql: int = 3
+    knowledge_chunk_max_chars: int = 1200
+    model_request_timeout_seconds: float = 120.0
+    model_max_retries: int = 2
+    model_retry_backoff_seconds: float = 2.0
     temperature: float = 0.0
 
 
@@ -57,6 +64,14 @@ def _path_value(raw_value: str | None, default_value: Path) -> Path:
     return (PROJECT_ROOT / candidate).resolve()
 
 
+def _bool_value(raw_value: object, default_value: bool) -> bool:
+    if raw_value is None:
+        return default_value
+    if isinstance(raw_value, bool):
+        return raw_value
+    return str(raw_value).strip().lower() in {"1", "true", "yes", "on"}
+
+
 def load_app_config(config_path: Path) -> AppConfig:
     payload = yaml.safe_load(config_path.read_text()) or {}
     dataset_defaults = DatasetConfig()
@@ -79,6 +94,34 @@ def load_app_config(config_path: Path) -> AppConfig:
         sql_result_limit=int(agent_payload.get("sql_result_limit", agent_defaults.sql_result_limit)),
         catalog_sample_rows=int(
             agent_payload.get("catalog_sample_rows", agent_defaults.catalog_sample_rows)
+        ),
+        enable_knowledge_retrieval=_bool_value(
+            agent_payload.get("enable_knowledge_retrieval"),
+            agent_defaults.enable_knowledge_retrieval,
+        ),
+        knowledge_top_k_plan=int(
+            agent_payload.get("knowledge_top_k_plan", agent_defaults.knowledge_top_k_plan)
+        ),
+        knowledge_top_k_sql=int(
+            agent_payload.get("knowledge_top_k_sql", agent_defaults.knowledge_top_k_sql)
+        ),
+        knowledge_chunk_max_chars=int(
+            agent_payload.get("knowledge_chunk_max_chars", agent_defaults.knowledge_chunk_max_chars)
+        ),
+        model_request_timeout_seconds=float(
+            agent_payload.get(
+                "model_request_timeout_seconds",
+                agent_defaults.model_request_timeout_seconds,
+            )
+        ),
+        model_max_retries=int(
+            agent_payload.get("model_max_retries", agent_defaults.model_max_retries)
+        ),
+        model_retry_backoff_seconds=float(
+            agent_payload.get(
+                "model_retry_backoff_seconds",
+                agent_defaults.model_retry_backoff_seconds,
+            )
         ),
         temperature=float(agent_payload.get("temperature", agent_defaults.temperature)),
     )

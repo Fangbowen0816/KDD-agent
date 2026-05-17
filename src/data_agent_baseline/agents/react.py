@@ -8,6 +8,15 @@ from pathlib import Path
 from typing import Any
 
 from data_agent_baseline.agents.model import ModelAdapter, ModelMessage, ModelStep
+from data_agent_baseline.agents.knowledge import (
+    KnowledgeChunk,
+    build_sql_knowledge_constraints,
+    knowledge_chunk_summary,
+    knowledge_corpus_summary,
+    parse_knowledge_markdown,
+    render_retrieved_knowledge,
+    retrieve_knowledge_chunks,
+)
 from data_agent_baseline.agents.prompt import (
     BASE_SYSTEM_PROMPT,
     build_answer_prompt,
@@ -37,6 +46,10 @@ class ReActAgentConfig:
     max_sql_attempts: int = 5
     sql_result_limit: int = 200
     catalog_sample_rows: int = 3
+    enable_knowledge_retrieval: bool = True
+    knowledge_top_k_plan: int = 4
+    knowledge_top_k_sql: int = 3
+    knowledge_chunk_max_chars: int = 1200
 
 
 def _strip_json_fence(raw_response: str) -> str:
@@ -410,6 +423,54 @@ def _build_answer_from_result(
     return AnswerTable(columns=columns, rows=rows)
 
 
+def _collect_schema_terms(engine_schema: dict[str, Any]) -> list[str]:
+    terms: list[str] = []
+    tables = engine_schema.get("tables")
+    if not isinstance(tables, dict):
+        return terms
+
+    for table_name, table_payload in tables.items():
+        if isinstance(table_name, str):
+            terms.append(table_name)
+        if not isinstance(table_payload, dict):
+            continue
+        columns = table_payload.get("columns")
+        if isinstance(columns, list):
+            terms.extend(str(column) for column in columns if isinstance(column, str))
+    return terms
+
+
+def _collect_catalog_terms(catalog: dict[str, Any]) -> list[str]:
+    terms: list[str] = []
+    terms.extend(_normalize_string_list(catalog.get("task_relevant_fields")))
+
+    tables = catalog.get("tables")
+    if not isinstance(tables, dict):
+        return terms
+
+    for table_name, table_payload in tables.items():
+        if isinstance(table_name, str):
+            terms.append(table_name)
+        if not isinstance(table_payload, dict):
+            continue
+        description = table_payload.get("description")
+        if isinstance(description, str):
+            terms.append(description)
+        columns = table_payload.get("columns")
+        if not isinstance(columns, dict):
+            continue
+        for column_name, column_payload in columns.items():
+            if isinstance(column_name, str):
+                terms.append(column_name)
+            if not isinstance(column_payload, dict):
+                continue
+            for key in ("semantic", "notes", "type_hint"):
+                value = column_payload.get(key)
+                if isinstance(value, str):
+                    terms.append(value)
+    return terms
+
+
 class ReActAgent:
     def __init__(
         self,
@@ -520,7 +581,7 @@ class ReActAgent:
         engine = DataEngine()
         loaded_data = engine.register_context_dir(task.context_dir)
         state.loaded_data = loaded_data
-        ok = bool(loaded_data.get("table_count"))
+        ok = bool(loaded_data.get("table_count")) and bool(loaded_data.get("success"))
         self._append_step(
             task.task_id,
             state,
@@ -536,7 +597,7 @@ class ReActAgent:
             ok=ok,
         )
         if not ok:
-            raise RuntimeError("No supported data files were loaded from context.")
+            raise RuntimeError("DataEngine failed to load all supported context files.")
         return engine
 
     def _generate_catalog(
@@ -576,12 +637,123 @@ class ReActAgent:
         )
         return compact_catalog
 
+    def _build_knowledge_context(
+        self,
+        task: PublicTask,
+        state: AgentRuntimeState,
+        *,
+        engine_schema: dict[str, Any],
+        catalog: dict[str, Any],
+    ) -> tuple[str, str, list[KnowledgeChunk]]:
+        empty_result = ("(none)", "(none)", [])
+
+        if not self.config.enable_knowledge_retrieval:
+            self._append_step(
+                task.task_id,
+                state,
+                phase="knowledge",
+                thought="Knowledge retrieval is disabled by config.",
+                action="retrieve_knowledge",
+                action_input={"enabled": False},
+                raw_response="",
+                observation={
+                    "ok": True,
+                    "content": {
+                        "enabled": False,
+                        "chunk_count": 0,
+                        "retrieved_for_plan": [],
+                        "sql_knowledge_constraints": "(none)",
+                    },
+                },
+                ok=True,
+            )
+            return empty_result
+
+        try:
+            knowledge_text = self._catalog_knowledge_text(task)
+            chunks = parse_knowledge_markdown(
+                knowledge_text,
+                chunk_max_chars=self.config.knowledge_chunk_max_chars,
+            )
+            schema_terms = _collect_schema_terms(engine_schema)
+            catalog_terms = _collect_catalog_terms(catalog)
+            plan_chunks = retrieve_knowledge_chunks(
+                chunks,
+                query=task.question,
+                schema_terms=schema_terms,
+                catalog_terms=catalog_terms,
+                top_k=self.config.knowledge_top_k_plan,
+                mode="plan",
+            )
+            retrieved_knowledge = render_retrieved_knowledge(plan_chunks)
+            sql_constraints = build_sql_knowledge_constraints(
+                plan_chunks,
+                top_k=self.config.knowledge_top_k_sql,
+            )
+
+            state.knowledge_chunks = knowledge_corpus_summary(chunks)
+            state.retrieved_knowledge = [
+                knowledge_chunk_summary(chunk) for chunk in plan_chunks
+            ]
+            state.sql_knowledge_constraints = sql_constraints
+
+            self._append_step(
+                task.task_id,
+                state,
+                phase="knowledge",
+                thought=(
+                    "Retrieved task-relevant knowledge for planning and compact SQL guardrails."
+                ),
+                action="retrieve_knowledge",
+                action_input={
+                    "enabled": True,
+                    "top_k_plan": self.config.knowledge_top_k_plan,
+                    "top_k_sql": self.config.knowledge_top_k_sql,
+                },
+                raw_response="",
+                observation={
+                    "ok": True,
+                    "content": {
+                        "chunk_count": len(chunks),
+                        "retrieved_for_plan": state.retrieved_knowledge,
+                        "sql_knowledge_constraints": sql_constraints,
+                    },
+                },
+                ok=True,
+            )
+            return retrieved_knowledge, sql_constraints, plan_chunks
+        except Exception as exc:  # noqa: BLE001
+            state.knowledge_chunks = []
+            state.retrieved_knowledge = []
+            state.sql_knowledge_constraints = "(none)"
+            self._append_step(
+                task.task_id,
+                state,
+                phase="knowledge",
+                thought="Knowledge retrieval failed; continuing without retrieved knowledge.",
+                action="retrieve_knowledge",
+                action_input={"enabled": True},
+                raw_response="",
+                observation={
+                    "ok": True,
+                    "content": {
+                        "warning": str(exc),
+                        "chunk_count": 0,
+                        "retrieved_for_plan": [],
+                        "sql_knowledge_constraints": "(none)",
+                    },
+                },
+                ok=True,
+            )
+            return empty_result
+
     def _generate_plan(
         self,
         task: PublicTask,
         state: AgentRuntimeState,
         catalog: dict[str, Any],
         engine_schema: dict[str, Any],
+        retrieved_knowledge: str,
     ) -> dict[str, Any]:
         plan_doc_files, plan_doc_text = self._plan_doc_bundle(task)
         raw_response, payload = self._complete_json(
@@ -590,6 +762,7 @@ class ReActAgent:
                 catalog=catalog,
                 engine_schema=engine_schema,
                 plan_doc_text=plan_doc_text,
+                retrieved_knowledge=retrieved_knowledge,
             )
         )
         plan = payload.get("plan")
@@ -609,6 +782,7 @@ class ReActAgent:
                 "ok": True,
                 "content": {
                     "plan_doc_files": plan_doc_files,
+                    "retrieved_knowledge": state.retrieved_knowledge,
                     "plan": plan,
                     "focused_schema": state.focused_schema,
                 },
@@ -625,6 +799,7 @@ class ReActAgent:
         catalog: dict[str, Any],
         plan: dict[str, Any],
         engine_schema: dict[str, Any],
+        sql_knowledge_constraints: str,
     ) -> None:
         tools = create_dataengine_tool_registry(
             engine,
@@ -632,7 +807,11 @@ class ReActAgent:
             sql_result_limit=self.config.sql_result_limit,
             schema_sample_rows=self.config.catalog_sample_rows,
         )
-        max_attempts = self.config.max_sql_attempts if self.config.max_sql_attempts > 0 else self.config.max_steps
+        max_attempts = (
+            self.config.max_sql_attempts
+            if self.config.max_sql_attempts > 0
+            else self.config.max_steps
+        )
         last_successful_sql: str | None = None
         last_successful_result: dict[str, Any] | None = None
         for _ in range(max_attempts):
@@ -646,6 +825,7 @@ class ReActAgent:
                     recent_attempts=recent_attempts,
                     tool_descriptions=tools.describe_for_prompt(["execute_dataengine_sql"]),
                     sql_result_limit=self.config.sql_result_limit,
+                    sql_knowledge_constraints=sql_knowledge_constraints,
                 )
             )
             try:
@@ -801,8 +981,28 @@ class ReActAgent:
             engine_schema = engine.describe_schema(sample_rows=self.config.catalog_sample_rows)
             state.engine_schema = engine_schema
             catalog = self._generate_catalog(task, state, engine_schema)
-            plan = self._generate_plan(task, state, catalog, engine_schema)
-            self._run_nl2sql_loop(task, state, engine, catalog, plan, engine_schema)
+            retrieved_knowledge, sql_knowledge_constraints, _ = self._build_knowledge_context(
+                task,
+                state,
+                engine_schema=engine_schema,
+                catalog=catalog,
+            )
+            plan = self._generate_plan(
+                task,
+                state,
+                catalog,
+                engine_schema,
+                retrieved_knowledge,
+            )
+            self._run_nl2sql_loop(
+                task,
+                state,
+                engine,
+                catalog,
+                plan,
+                engine_schema,
+                sql_knowledge_constraints,
+            )
             self._generate_answer(task, state, engine, catalog, plan)
         except Exception as exc:
             state.failure_reason = str(exc)

@@ -31,6 +31,9 @@ class AgentRuntimeState:
     catalog: dict[str, Any] | None = None
     plan: dict[str, Any] | None = None
     focused_schema: dict[str, Any] | None = None
+    knowledge_chunks: list[dict[str, Any]] = field(default_factory=list)
+    retrieved_knowledge: list[dict[str, Any]] = field(default_factory=list)
+    sql_knowledge_constraints: str | None = None
     sql_attempts: list[dict[str, Any]] = field(default_factory=list)
     final_sql: str | None = None
     final_sql_result: dict[str, Any] | None = None
