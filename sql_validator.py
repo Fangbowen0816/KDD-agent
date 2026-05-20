@@ -11,10 +11,20 @@ from src.data_agent_baseline.tools.dataengine import DataEngine
 
 # 在这里列出你想验证的任务；SQL 内容放在 SQL_FILE_PATH 指向的文件中。
 TASKS = [
-    "task_163",
-    "task_169",
-    "task_173",
-    "task_180"
+    # "task_163",
+    # "task_169",
+    # "task_173",
+    # "task_180",
+    # "task_199",
+    # "task_218",
+    # "task_22",
+    # "task_249",
+    # "task_25",
+    # "task_257",
+    # "task_269",
+    # "task_80",
+    # "task_86",
+    "task_200",
 ]
 
 SQL_FILE_PATH = Path("manual_sql.py")

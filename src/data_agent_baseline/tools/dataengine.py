@@ -8,6 +8,7 @@ from typing import Any
 import duckdb
 import sqlglot
 from sqlglot import exp
+from datetime import date, datetime, time
 
 
 DEFAULT_MAX_LOAD_FILE_BYTES = 512 * 1024 * 1024
@@ -393,6 +394,10 @@ class DataEngine:
     def _json_safe_value(self, value: Any) -> Any:
         if value is None:
             return None
+        if isinstance(value, datetime):
+            if value.time() == time(0,0):
+                return value.date().isoformat()
+
         if hasattr(value, "item"):
             try:
                 value = value.item()

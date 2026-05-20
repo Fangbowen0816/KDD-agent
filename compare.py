@@ -6,7 +6,7 @@ from collections import Counter
 from datetime import date, datetime, timezone
 from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
 
-PRED_DIR = "artifacts/runs/20260516T121725Z"
+PRED_DIR = "artifacts/runs/20260518T063034Z"
 GOLD_DIR = "data/public/output"
 
 NULL_STRINGS = {"", "null", "none", "nan", "nat", "<na>"}
@@ -379,10 +379,10 @@ def main():
     # =========================
     # save report
     # =========================
-    with open("per_task_report_0515_4.json", "w") as f:
+    with open("per_task_report_0518_2.json", "w") as f:
         json.dump(final_report, f, indent=2, ensure_ascii=False)
 
-    print("\nSaved: per_task_report_0515_4.json")
+    print("\nSaved: per_task_report_0518_2.json")
     
 if __name__ == "__main__":
     main()

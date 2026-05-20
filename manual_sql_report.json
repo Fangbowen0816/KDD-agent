@@ -1,178 +1,35 @@
 {
   "sql_file": "manual_sql.py",
   "tasks": {
-    "task_163": {
+    "task_200": {
       "status": "correct",
       "correct": true,
       "error_type": null,
       "error_detail": null,
       "accuracy": 1.0,
-      "sql": "SELECT\n            type,\n            SUM(expense.cost) AS total_approved_value\n        FROM event\n        INNER JOIN budget\n            ON event.event_id = budget.link_to_event\n        INNER JOIN expense\n            ON budget.budget_id = expense.link_to_budget\n        WHERE event.event_name = 'October Meeting'\n            AND expense.approved = TRUE\n        GROUP BY type",
+      "sql": "SELECT COUNT(DISTINCT T1.atom_id)\n        FROM atom AS T1\n        INNER JOIN bond AS T2\n            ON T1.molecule_id = T2.molecule_id\n        WHERE T2.bond_type = '#'\n            AND T1.element IN ('p', 'br')",
       "row_count": 1,
       "columns": [
-        "type",
-        "total_approved_value"
+        "count(DISTINCT T1.atom_id)"
       ],
       "rows": [
         [
-          "Meeting",
-          175.39
+          1
         ]
       ],
       "gold_columns": [
-        "type",
-        "SUM(T3.cost)"
+        "COUNT(T1.atom_id)"
       ],
       "gold_rows": [
         [
-          "Meeting",
-          175.39
-        ]
-      ]
-    },
-    "task_169": {
-      "status": "correct",
-      "correct": true,
-      "error_type": null,
-      "error_detail": null,
-      "accuracy": 1.0,
-      "sql": "SELECT AVG(ym.Consumption) / 12 AS AvgMonthlyConsumption\n        FROM yearmonth ym\n        INNER JOIN customers c\n            ON ym.CustomerID = c.CustomerID\n        WHERE c.Segment = 'SME'\n            AND ym.Date >= 201301\n            AND ym.Date <= 201312",
-      "row_count": 1,
-      "columns": [
-        "AvgMonthlyConsumption"
-      ],
-      "rows": [
-        [
-          459.9562642871003
-        ]
-      ],
-      "gold_columns": [
-        "AVG(T2.Consumption) / 12"
-      ],
-      "gold_rows": [
-        [
-          459.9562642871061
-        ]
-      ]
-    },
-    "task_173": {
-      "status": "correct",
-      "correct": true,
-      "error_type": null,
-      "error_detail": null,
-      "accuracy": 1.0,
-      "sql": "SELECT DISTINCT gs.Country\n        FROM yearmonth ym\n        INNER JOIN transactions_1k ts\n            ON ym.CustomerID = ts.CustomerID\n        INNER JOIN gasstations gs\n            ON ts.GasStationID = gs.GasStationID\n        WHERE ym.Date = 201306\n        ORDER BY gs.Country",
-      "row_count": 2,
-      "columns": [
-        "Country"
-      ],
-      "rows": [
-        [
-          "CZE"
-        ],
-        [
-          "SVK"
-        ]
-      ],
-      "gold_columns": [
-        "Country"
-      ],
-      "gold_rows": [
-        [
-          "CZE"
-        ],
-        [
-          "SVK"
-        ]
-      ]
-    },
-    "task_180": {
-      "status": "correct",
-      "correct": true,
-      "error_type": null,
-      "error_detail": null,
-      "accuracy": 1.0,
-      "sql": "SELECT DISTINCT y.CustomerID, y.Consumption\n        FROM transactions_1k t\n        INNER JOIN yearmonth y \n            ON t.CustomerID = y.CustomerID\n        WHERE t.ProductID = 5\n            AND t.Amount > 0\n            AND (t.Price / t.Amount) > 29.00\n            AND y.Date = 201208",
-      "row_count": 9,
-      "columns": [
-        "CustomerID",
-        "Consumption"
-      ],
-      "rows": [
-        [
-          20447.0,
-          58.19
-        ],
-        [
-          5443.0,
-          88265.39
-        ],
-        [
-          7626.0,
-          45937.22
-        ],
-        [
-          23861.0,
-          8878.07
-        ],
-        [
-          6768.0,
-          126157.7
-        ],
-        [
-          18831.0,
-          1903.2
-        ],
-        [
-          24700.0,
-          69331.72
-        ],
-        [
-          45868.0,
-          1142.95
-        ],
-        [
-          46933.0,
-          1129.2
-        ]
-      ],
-      "gold_columns": [
-        "Consumption"
-      ],
-      "gold_rows": [
-        [
-          1903.2
-        ],
-        [
-          88265.39
-        ],
-        [
-          1129.2
-        ],
-        [
-          126157.7
-        ],
-        [
-          58.19
-        ],
-        [
-          1142.95
-        ],
-        [
-          8878.07
-        ],
-        [
-          69331.72
-        ],
-        [
-          45937.22
+          1
         ]
       ]
     }
   },
   "summary": {
-    "total": 4,
-    "correct": 4,
+    "total": 1,
+    "correct": 1,
     "wrong": 0,
     "error": 0,
     "missing_sql": 0
